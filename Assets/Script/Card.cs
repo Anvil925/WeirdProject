@@ -16,4 +16,9 @@ public class Card : MonoBehaviour
     {
         
     }
+
+    public void OpenCard()  //임의로 작성한 함수라 수정하셔도 괜찮습니다!
+    {
+        audioSource.PlayOneShot(clip);
+    }
 }
