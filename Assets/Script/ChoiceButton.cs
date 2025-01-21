@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class ChoiceButton : MonoBehaviour
 {
-    int toplevel = PlayerPrefs.GetInt("PlayerLv");
+    public int toplevel;
 
-    public void Start()
+    public void Awake()
     {
-       
-
+        toplevel = PlayerPrefs.GetInt("PlayerLv");
     }
+
 
     public void Choice2Lv()
         //2lv
