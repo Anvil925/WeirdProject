@@ -9,6 +9,6 @@ public class ContinueBtn : MonoBehaviour
     public void Btn_Continue()
     {
         Debug.Log("ContinueBtn");
-        //SceneManager.LoadScene("ContinueScene");
+        SceneManager.LoadScene("ChoiceScene");
     }
 }
