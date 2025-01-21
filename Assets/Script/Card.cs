@@ -16,6 +16,7 @@ public class Card : MonoBehaviour
     public SpriteRenderer frontImage;
 
     public int idx = 0;
+
     
     void Start()
     {
@@ -28,7 +29,7 @@ public class Card : MonoBehaviour
     }
 
 
-    public void OpenCard()  //임의로 작성한 함수라 수정하셔도 괜찮습니다!
+    public void OpenCard()  
     {
         audioSource.PlayOneShot(clip);
     }
@@ -36,7 +37,7 @@ public class Card : MonoBehaviour
     public void Setting(int num)
     {
         idx = num;
-        //frontImage.sprite = R
+        
 
     }
 }
