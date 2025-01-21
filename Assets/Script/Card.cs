@@ -40,4 +40,9 @@ public class Card : MonoBehaviour
         
 
     }
+
+    public void OpenSceneSetting(int num)
+    {
+        
+    }
 }
