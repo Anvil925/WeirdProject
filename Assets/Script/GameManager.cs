@@ -12,10 +12,17 @@ public class GameManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip clip;
 
+
+    public Card firstCard;
+    public Card secondCard;
+
     public Text timeTxt;
 
-    float time;
+    float time = 300.0f;
+
     float endtime = 0f;
+
+
     int level;
 
     public void Awake()
@@ -33,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N1");
 
@@ -51,5 +59,10 @@ public class GameManager : MonoBehaviour
     public void Level2()
     {
         time = 180.0f;
+    }
+
+    public void Matched()
+    {
+
     }
 }
