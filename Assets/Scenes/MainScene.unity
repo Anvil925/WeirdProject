@@ -152,6 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1392938ffa9d843cab8a6fd4bd6c37a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstTry: {fileID: 0}
+  secondTry: {fileID: 0}
+  timeTxt: {fileID: 1894322580}
+  cardCount: 0
 --- !u!4 &97638719
 Transform:
   m_ObjectHideFlags: 0

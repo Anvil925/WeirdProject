@@ -20,10 +20,9 @@ public class Board : MonoBehaviour
             float y = (i / 4) * 1.4f - 4.0f;
 
             callCard.transform.position = new Vector2(x, y);
-            //go.GetComponent<Card>().Setting(arr[i]);
+            callCard.GetComponent<Card>().Setting(arr[i]);
         }
-
-        //GameManager.Instance.cardCount = arr.Length;
+        GameManager.Instance.cardCount = arr.Length;
     }
 
 }
