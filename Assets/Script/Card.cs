@@ -27,16 +27,6 @@ public class Card : MonoBehaviour
         
     }
 
-
-    public void OpenCard(bool sound)  //임의로 작성한 함수라 수정하셔도 괜찮습니다!
-    {
-        if (sound)
-        {
-            audioSource.PlayOneShot(clip);
-        }
-    }
-
-
     public void Setting(int num)
     {
         idx = num;

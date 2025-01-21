@@ -36,19 +36,21 @@ public class GameManager : MonoBehaviour
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
 
-        if (true){} // ´Ü°è¸¶´Ù ´Ù¸¥ ½Ã°£Á¦ÇÑ °ÔÀÓ¿À¹ö ±¸Çö
+        if (true){} // ï¿½Ü°è¸¶ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
     public void Matched()
     {
         if (firstTry.idx == secondTry.idx)
         {
+            audioSource.PlayOneShot(clip);
+            
             firstTry.DestroyCard();
             secondTry.DestroyCard();
             cardCount -= 2;
             if (cardCount == 0)
             {
-                //Ä«µå¸¦ ¸ðµÎ ´Ù ¸ÂÃß¾î¼­ Å¬¸®¾î ÇßÀ»¶§
+                //Ä«ï¿½å¸¦ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ß¾î¼­ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 Time.timeScale = 0.0f;
             }
         }
