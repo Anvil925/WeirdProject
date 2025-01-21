@@ -9,18 +9,21 @@ public class ChoiceButton : MonoBehaviour
     void Choice()
     {
         /*
-        if()
+        if(toplevel <= 2)
             //2단계
         {
             SceneManager.LoadScene("MainScene");
-
+            time = 180.0f;
+            // 메인 씬 남은 시간 3분으로 변경
         }
-        else if ()
+        else if (toplevel <= 3)
             //3단계
         {
             SceneManager.LoadScene("MainScene");
+            time = 60.0f;
+            // 메인 씬 남은 시간 1분으로 변경
 
         }*/
-        
+
     }
 }
