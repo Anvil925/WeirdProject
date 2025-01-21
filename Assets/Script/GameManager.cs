@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
 
-        if (true){} // �ܰ踶�� �ٸ� �ð����� ���ӿ��� ����
+        if (true){} 
     }
 
     public void Matched()
@@ -48,9 +48,10 @@ public class GameManager : MonoBehaviour
             firstTry.DestroyCard();
             secondTry.DestroyCard();
             cardCount -= 2;
+
+            // 카드를 모두 맞추면
             if (cardCount == 0)
             {
-                //ī�带 ��� �� ���߾ Ŭ���� ������
                 Time.timeScale = 0.0f;
             }
         }
