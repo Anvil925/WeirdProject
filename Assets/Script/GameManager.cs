@@ -18,12 +18,16 @@ public class GameManager : MonoBehaviour
 
     public Text timeTxt;
 
-    public float time = 300.0f;
+    public int level = 3;
+
+    public int cardCount = 0;
+
+    public GameObject endTxt;
+    public GameObject nextTxt;
 
     float endtime = 0f;
+    float time;
 
-
-    int level = 3;
 
     public void Awake()
     {
@@ -37,6 +41,18 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
+        if(level == 1)
+        {
+            time = 300.0f;
+        }
+        else if (level == 2)
+        {
+            time = 180.0f;
+        }
+        else if(level == 3)
+        {
+            time = 60.0f;
+        }
     }
 
     void Update()

@@ -29,12 +29,27 @@ public class Card : MonoBehaviour
     }
 
 
-    public void OpenCard()  
+    public void OpenCard()
     {
+        if (GameManager.Instance.secondCard != null) return;
         audioSource.PlayOneShot(clip);
-    }
 
-    public void Setting(int num)
+
+        front.SetActive(true);
+        back.SetActive(false);
+
+        if (GameManager.Instance.firstCard == null)
+        {
+            GameManager.Instance.firstCard = this;
+
+        }
+        else
+        {
+            GameManager.Instance.secondCard = this;
+            GameManager.Instance.Matched();
+        }
+    }
+            public void Setting(int num)
     {
         idx = num;
         
