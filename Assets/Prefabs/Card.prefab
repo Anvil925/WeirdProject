@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7565509868878178097}
-  - component: {fileID: 5045793854108020216}
+  - component: {fileID: 1637217694002824130}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 7802448839254140222}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5045793854108020216
+--- !u!114 &1637217694002824130
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51,7 +51,7 @@ MonoBehaviour:
   front: {fileID: 5602952796702270626}
   back: {fileID: 5243625046241502737}
   anim: {fileID: 0}
-  frontImage: {fileID: 0}
+  frontImage: {fileID: 1897327421901652896}
   idx: 0
 --- !u!1 &5243625046241502737
 GameObject:
@@ -69,7 +69,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7802448839254140222
 Transform:
   m_ObjectHideFlags: 0

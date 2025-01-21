@@ -37,11 +37,11 @@ public class Card : MonoBehaviour
         }
     }
 
+
     public void Setting(int num)
     {
         idx = num;
         //frontImage.sprite = R
-
     }
 
     public void OpenSceneSetting(int num, string path)
@@ -54,5 +54,11 @@ public class Card : MonoBehaviour
         string file_path = $"{path}/{num}";
         Debug.Log(file_path);
         frontImage.sprite = Resources.Load<Sprite>(file_path);
+    }
+
+    public void OpenCard()  
+    {
+        audioSource.PlayOneShot(clip);
+
     }
 }
