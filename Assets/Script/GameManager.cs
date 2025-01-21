@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     float endtime = 0f;
 
 
-    int level;
+    int level = 3;
 
     public void Awake()
     {
@@ -59,6 +59,10 @@ public class GameManager : MonoBehaviour
     public void Level2()
     {
         time = 180.0f;
+    }
+    public void Level3()
+    {
+        time = 60.0f;
     }
 
     public void Matched()
