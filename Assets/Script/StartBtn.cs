@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class StartBtn : MonoBehaviour
 {
-    // ½ÃÀÛÇÏ±â ¹öÆ°
+    // ì‹œì‘í•˜ê¸° ë²„íŠ¼
     public void Btn_Start()
     {
         Debug.Log("StartBtn");
