@@ -30,7 +30,7 @@ public class CardBoard : MonoBehaviour
 
             Debug.Log($"\nnum = {i} \nidx = {idx}");
             go.GetComponent<Card>().OpenSceneSetting(idx, path);
-            //go.GetComponent<Card>().OpenCard(false);
+            go.GetComponent<Card>().OpenCard();
 
             //memberArr[i] = go;
 
