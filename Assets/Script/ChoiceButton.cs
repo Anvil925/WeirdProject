@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ChoiceButton : MonoBehaviour
 {
+
+    Animator anim;
+
     // Start is called before the first frame update
     public void Choice2Lv()
         //2lv
@@ -22,5 +25,6 @@ public class ChoiceButton : MonoBehaviour
     public void BackOpenS()
     {
         SceneManager.LoadScene("OpenScene");
+        anim.SetBool("isUse", true);
     }
 }
