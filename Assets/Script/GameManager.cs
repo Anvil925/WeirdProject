@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public AudioSource audioSource;
+    public AudioClip clip;
+
     public Card firstTry;
     public Card secondTry;
 
@@ -25,6 +28,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1.0f;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()

@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba85c25d85df7a4a836c3790b976cc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 1a490f3230f8e45d7b64335106d0ebc9, type: 3}
   audioSource: {fileID: 0}
   front: {fileID: 5602952796702270626}
   back: {fileID: 5243625046241502737}

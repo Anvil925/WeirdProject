@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Card : MonoBehaviour
@@ -26,10 +27,32 @@ public class Card : MonoBehaviour
         
     }
 
+
+    public void OpenCard(bool sound)  //임의로 작성한 함수라 수정하셔도 괜찮습니다!
+    {
+        if (sound)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+    }
+
+
     public void Setting(int num)
     {
         idx = num;
         frontImage.sprite = Resources.Load<Sprite>($"Images/GameCard/card{idx}");
+    }
+
+    public void OpenSceneSetting(int num, string path)
+    {
+        if (frontImage == null)
+        {
+            Debug.LogError("FrontImage가 Scene에 없습니다!");
+        }
+
+        string file_path = $"{path}/{num}";
+        Debug.Log(file_path);
+        frontImage.sprite = Resources.Load<Sprite>(file_path);
     }
 
     public void OpenCard()  
@@ -45,6 +68,7 @@ public class Card : MonoBehaviour
             GameManager.Instance.Matched();
         }
         audioSource.PlayOneShot(clip);
+
 
         anim.SetBool("isOpen", true);
         front.SetActive(true);
@@ -71,5 +95,6 @@ public class Card : MonoBehaviour
         front.SetActive(false);
         back.SetActive(true);
         GameManager.Instance.isCanOpen = true;
+
     }
 }
