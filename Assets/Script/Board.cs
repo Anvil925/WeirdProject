@@ -14,16 +14,15 @@ public class Board : MonoBehaviour
 
         for (int i = 0; i < 20; i++)
         {
-            GameObject callCard = Instantiate(card, this.transform); // 카드를 보드의 위치에 호출
+            GameObject callCard = Instantiate(card, this.transform); 
             callCard.name = i.ToString();
             float x = (i % 4) * 1.4f - 2.1f;
             float y = (i / 4) * 1.4f - 4.0f;
 
             callCard.transform.position = new Vector2(x, y);
-            //go.GetComponent<Card>().Setting(arr[i]);
+            callCard.GetComponent<Card>().Setting(arr[i]);
         }
-
-        //GameManager.Instance.cardCount = arr.Length;
+        GameManager.Instance.cardCount = arr.Length;
     }
 
 }
