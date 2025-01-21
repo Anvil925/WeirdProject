@@ -8,6 +8,7 @@ public class ChoiceButton : MonoBehaviour
     // Start is called before the first frame update
     void Choice()
     {
+        /*
         if()
             //2´Ü°è
         {
@@ -19,7 +20,7 @@ public class ChoiceButton : MonoBehaviour
         {
             SceneManager.LoadScene("MainScene");
 
-        }
+        }*/
         
     }
 }
