@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
 
     public Text timeTxt;
 
-    float time = 300.0f;
+    float time;
+    float endtime = 0f;
     int level;
 
     public void Awake()
@@ -33,12 +34,22 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         time -= Time.deltaTime;
-        timeTxt.text = time.ToString("N2");
+        timeTxt.text = time.ToString("N1");
+
+        if(time >= endtime)
+        {
+            Time.timeScale = 0f;
+            GameLvSave();
+        }
     }
     
     public void GameLvSave()
     {
         PlayerPrefs.SetInt("PlayerLv", level);
         PlayerPrefs.Save();
+    }
+    public void Level2()
+    {
+        time = 180.0f;
     }
 }
