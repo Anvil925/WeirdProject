@@ -40,7 +40,7 @@ public class Card : MonoBehaviour
             Debug.LogError("FrontImage가 Scene에 없습니다!");
         }
 
-        string file_path = $"{path}/{num}";
+        string file_path = $"{path}{num}";
         Debug.Log(file_path);
         frontImage.sprite = Resources.Load<Sprite>(file_path);
     }
