@@ -39,4 +39,9 @@ public class Card : MonoBehaviour
         //frontImage.sprite = R
 
     }
+
+    public void OpenSceneSetting(int num)
+    {
+        
+    }
 }
