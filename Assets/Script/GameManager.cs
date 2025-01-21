@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     public Text timeTxt;
 
-    float time = 300.0f;
+    public float time = 300.0f;
 
     float endtime = 0f;
 
@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N1");
 
-        if(time >= endtime)
+        if(time <= endtime)
         {
             Time.timeScale = 0f;
             GameLvSave();
@@ -55,14 +56,6 @@ public class GameManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("PlayerLv", level);
         PlayerPrefs.Save();
-    }
-    public void Level2()
-    {
-        time = 180.0f;
-    }
-    public void Level3()
-    {
-        time = 60.0f;
     }
 
     public void Matched()

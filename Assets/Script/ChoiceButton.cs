@@ -18,7 +18,7 @@ public class ChoiceButton : MonoBehaviour
         //2lv
         //메인신에서 시작 타이머 3분 으로 변경하기
     {
-        if(toplevel == 2)
+        if(toplevel >= 2)
         {
             SceneManager.LoadScene("MainScene");
             GameManager.Instance.Level2();
@@ -31,7 +31,7 @@ public class ChoiceButton : MonoBehaviour
         if (toplevel == 3)
         {
             SceneManager.LoadScene("MainScene");
-            GameManager.Instance.Level3();
+            GameManager.Instance.time = 60.0f;
         }
     }
 
