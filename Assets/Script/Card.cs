@@ -16,7 +16,6 @@ public class Card : MonoBehaviour
     public SpriteRenderer frontImage;
 
     public int idx = 0;
-
     
     void Start()
     {
@@ -28,21 +27,14 @@ public class Card : MonoBehaviour
         
     }
 
+    public void Setting(int num)
+    {
+        idx = num;
+        //frontImage.sprite = R
+    }
 
     public void OpenCard()  
     {
         audioSource.PlayOneShot(clip);
-    }
-
-    public void Setting(int num)
-    {
-        idx = num;
-        
-
-    }
-
-    public void OpenSceneSetting(int num)
-    {
-        
     }
 }
