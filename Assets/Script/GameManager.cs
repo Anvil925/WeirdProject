@@ -36,19 +36,22 @@ public class GameManager : MonoBehaviour
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
 
-        if (true){} // 단계마다 다른 시간제한 게임오버 구현
+        if (true){} 
     }
 
     public void Matched()
     {
         if (firstTry.idx == secondTry.idx)
         {
+            audioSource.PlayOneShot(clip);
+            
             firstTry.DestroyCard();
             secondTry.DestroyCard();
             cardCount -= 2;
+
+            // 移대뱶瑜� 紐⑤몢 留욎텛硫�
             if (cardCount == 0)
             {
-                //카드를 모두 다 맞추어서 클리어 했을때
                 Time.timeScale = 0.0f;
             }
         }
