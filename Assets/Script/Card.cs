@@ -37,7 +37,7 @@ public class Card : MonoBehaviour
     {
         if (frontImage == null)
         {
-            Debug.LogError("FrontImage가 Scene에 없습니다!");
+            Debug.LogError("FrontImage가 Scene???�습?�다!");
         }
 
         string file_path = $"{path}{num}";

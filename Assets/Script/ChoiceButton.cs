@@ -5,22 +5,33 @@ using UnityEngine.SceneManagement;
 
 public class ChoiceButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Choice()
+
+    public int saveLevel;
+
+    public void Start()
     {
-        /*
-        if()
-            //2단계
-        {
-            SceneManager.LoadScene("MainScene");
+        saveLevel = PlayerPrefs.GetInt("GameLv");
 
-        }
-        else if ()
-            //3단계
-        {
-            SceneManager.LoadScene("MainScene");
+    }
 
-        }*/
-        
+    public void Choice2Lv()
+    //2lv
+    {
+        saveLevel = 2;
+        PlayerPrefs.SetInt("LoadLv", saveLevel);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("MainScene");
+    }
+    public void Choice3Lv()
+    //3lv
+    {
+        saveLevel = 3;
+        PlayerPrefs.SetInt("LoadLv", saveLevel);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("MainScene");
+    }
+    public void BackScene()
+    {
+        SceneManager.LoadScene("OpenScene");
     }
 }
