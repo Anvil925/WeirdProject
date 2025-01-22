@@ -88,12 +88,17 @@ public class GameManager : MonoBehaviour
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N1");
 
-        if (level >= toplevel)
+
+        if ( time <=endtime)
         {
-            if (toplevel >= saveLevel)
+            Time.timeScale = 0f;
+            if (level >= toplevel)
             {
-                toplevel = saveLevel;
-                GameLvSave();
+                if (toplevel >= saveLevel)
+                {
+                    toplevel = saveLevel;
+                    GameLvSave();
+                }
             }
         }
 
