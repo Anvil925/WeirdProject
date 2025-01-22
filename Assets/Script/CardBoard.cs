@@ -10,41 +10,36 @@ public class CardBoard : MonoBehaviour
 
     public Vector3 upVec = new Vector3(4, 2, 0);
     public float Speed = 0.5f;
+    public float CardDistance = 0.5f;
     public float Opacity = 1f;
     public float CardRotation = 0f;
 
-    public static int RepeatCount = 15;
+    public static int RepeatCount = 20;
 
     public GameObject game0;
     public GameObject game1;
     public GameObject game2;
     public GameObject game3;
+    public GameObject game4;
 
     public GameObject member0;
     public GameObject member1;
     public GameObject member2;
     public GameObject member3;
+    public GameObject member4;
 
-    GameObject[] gameArr = new GameObject[4];
-    GameObject[] memberArr = new GameObject[4];
+    GameObject[] gameArr = new GameObject[5];
+    GameObject[] memberArr = new GameObject[5];
 
     GameObject[] gArr = new GameObject[RepeatCount];
     GameObject[] mArr = new GameObject[RepeatCount];
 
-    Vector3 gameLastPos = Vector3.zero;
-    Vector3 memberLastPos = Vector3.zero;
-
-
     // Start is called before the first frame update
     void Start()
     {
-        
         CardInit();
         CreateCard(gameArr, gArr, StartPosition_game, Signed(true));
         CreateCard(memberArr, mArr, StartPosition_member, Signed(false));
-
-        gameLastPos = gArr[^1].transform.position;
-        memberLastPos = mArr[mArr.Length - 1].transform.position;
     }
 
     // Update is called once per frame
@@ -65,23 +60,26 @@ public class CardBoard : MonoBehaviour
         gameArr[1] = game1;
         gameArr[2] = game2;
         gameArr[3] = game3;
+        gameArr[4] = game4;
         memberArr[0] = member0;
         memberArr[1] = member1;
         memberArr[2] = member2;
         memberArr[3] = member3;
+        memberArr[4] = member4;
     }
 
     // 카드 생성 함수
     private void CreateCard(GameObject[] inArr, GameObject[] outArr, Vector2 startPos, float signed)
     {
+        upVec.Normalize();
         for (int i = 0; i < RepeatCount; i++)
         {
             int idx = i % inArr.Length;
             GameObject go = Instantiate(inArr[idx], this.transform);
 
             // 카드 위치 지정
-            float x = signed * i / upVec.y + startPos.x;
-            float y = signed * i / upVec.x + startPos.y;
+            float x = signed * i * CardDistance * upVec.x + startPos.x;
+            float y = signed * i * CardDistance * upVec.y + startPos.y;
 
             // 카드 transform 설정
             Vector3 cardPosition = new Vector3(x, y, 0);
@@ -125,11 +123,15 @@ public class CardBoard : MonoBehaviour
     {
         for (int i = 0; i < RepeatCount; i++)
         {
+            int num = i - 1;
+            if (i == 0)
+                num = inArr.Length - 1;
+
             Vector3 position = inArr[i].transform.position;
-            if ((position.x < -4f && signed > 0) || (position.x > 4f && signed < 0))
+            if ((position.x < -3.5f && signed > 0) || (position.x > 3.5f && signed < 0))
             {
-                float x = signed * RepeatCount / 2 * upVec.x + startPos.x;
-                float y = signed * RepeatCount / 2 * upVec.y + startPos.y;
+                float x = signed * CardDistance * upVec.x + inArr[num].transform.position.x;
+                float y = signed * CardDistance * upVec.y + inArr[num].transform.position.y;
                 Vector3 newPos = new Vector3(x, y, 0);
                 Debug.Log($"\nnewPos : {newPos}\nupVec : {upVec}");
                 inArr[i].transform.position = newPos;
