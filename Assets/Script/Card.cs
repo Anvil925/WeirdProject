@@ -47,29 +47,32 @@ public class Card : MonoBehaviour
 
     public void OpenCard()  
     {
+        //첫번째 firstTry에 값이 들어오고 바로 다음 눌렀을때 firstTry에 또 들어오는 것을 해소
+        //두번재부터는 isCanOpen 이 true기 때문에 아래 return에 걸리지 않고 firstTryif에도 걸리지 않고 else문으로 가게됨.
         if (!GameManager.Instance.isCanOpen) return;
-
         if (GameManager.Instance.firstTry == null)
         {
             GameManager.Instance.firstTry = this;
-            Debug.Log(GameManager.Instance.firstTry.name.ToString());
+            audioSource.PlayOneShot(clip);
+            GameManager.Instance.firstTry.anim.SetBool("isOpen", true);
         }
-        else 
+        else if(GameManager.Instance.secondTry == null) //두번째 카드가 비었을때
         {
-            GameManager.Instance.secondTry = this;
-            if(GameManager.Instance.firstTry != GameManager.Instance.secondTry)
+            GameManager.Instance.secondTry = this; // 널값인 두번째 카드를 현재 카드로 만들어줌
+            if(GameManager.Instance.firstTry != GameManager.Instance.secondTry) // 첫번째카드와 두번째 카드가 같지않을때 
             {
-                Debug.Log(GameManager.Instance.secondTry.name.ToString());
-                GameManager.Instance.isCanOpen = false;
-                GameManager.Instance.Matched();
+                GameManager.Instance.secondTry.anim.SetBool("isOpen", true); //두번째 카드의 앞면을 공개
+                GameManager.Instance.Matched(); // 두 카드를 삭제할지 다시 뒷면으로 할지 비교
+                GameManager.Instance.isCanOpen = false; 
+                audioSource.PlayOneShot(clip);
             }
             else
                 GameManager.Instance.secondTry = null;
         }
-        audioSource.PlayOneShot(clip);
-
-
-        anim.SetBool("isOpen", true);
+        //audioSource.PlayOneShot(clip);
+        //
+        //
+        //anim.SetBool("isOpen", true);
         //front.SetActive(true);
         //back.SetActive(false);
     }

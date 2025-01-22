@@ -16,11 +16,14 @@ public class GameManager : MonoBehaviour
 
     public Text timeTxt;
 
+    public Animator timeAnim;
+
     public GameObject endTxt;
 
     public int cardCount = 0;
     public bool isCanOpen = true;
     float time = 0.0f;
+    float timeLimit = 0.0f;
     float endtime = 0f;
 
     public int level;
@@ -34,7 +37,6 @@ public class GameManager : MonoBehaviour
         if (Instance == null) Instance = this;
     }
 
-
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -44,23 +46,21 @@ public class GameManager : MonoBehaviour
 
         if (level == 1)
         {
-            time = 300.0f;
+            timeLimit = 300.0f;
         }
         else if (level == 2)
         {
-            time = 180.0f;
-
+            timeLimit = 180.0f;
         }
         else if (level == 3)
         {
-            time = 60.0f;
-
+            timeLimit = 60.0f;
         }
         else
         {
-            time = 30.0f;
-
+            timeLimit = 60.0f;
         }
+        time = timeLimit;
         Time.timeScale = 1.0f;
     }
 
@@ -68,20 +68,25 @@ public class GameManager : MonoBehaviour
     {
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N1");
-        
-        if (time <= endtime)
+
+        //스테이지 시간의 1/3 보다 시간 안남았을때인데 수정하셔도 됩니다.
+        if ((timeLimit / 3) >= time) 
         {
-            Time.timeScale = 0f;
-            if (level >= saveLevel)
+            timeAnim.SetBool("isTimeLimit", true);
+            if (time <= endtime)
             {
-                GameLvSave();
+                Time.timeScale = 0f;
+                if (level >= saveLevel)
+                {
+                    GameLvSave();
+                }
             }
         }
     }
 
     public void Matched()
     {
-        if (firstTry.idx == secondTry.idx)
+        if (firstTry.idx == secondTry.idx) // 두 카드가 같으면 삭제 
         {
             audioSource.PlayOneShot(clip);
             
@@ -100,6 +105,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            //firstTry.anim.SetBool("isOpen", false);
+            //secondTry.anim.SetBool("isOpen", false);
             firstTry.CloseCard();
             secondTry.CloseCard();
         }

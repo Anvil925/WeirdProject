@@ -158,9 +158,10 @@ MonoBehaviour:
   firstTry: {fileID: 0}
   secondTry: {fileID: 0}
   timeTxt: {fileID: 1894322580}
+  timeAnim: {fileID: 1894322582}
   endTxt: {fileID: 0}
   cardCount: 0
-  isCanOpen: 0
+  isCanOpen: 1
   level: 0
   hiddenLevel: 4
 --- !u!4 &97638719
@@ -703,7 +704,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 848469653}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d2043328a8384ff4b15ad4362342429, type: 3}
   m_Name: 
@@ -905,7 +906,7 @@ Animator:
   m_GameObject: {fileID: 1894322578}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5f493413e92d08b45b0b596ab258559a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
