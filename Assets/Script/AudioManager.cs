@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    
     public AudioSource audioSource;
     public AudioClip clip;
 
@@ -12,11 +11,13 @@ public class AudioManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
+
     void Start()
     {
-        audioSource.clip = this.clip;
+        audioSource.clip = clip;
         audioSource.Play();
     }
+
     public void SetPitch(float newPitch)
     {
         audioSource.pitch = newPitch;

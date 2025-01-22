@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     public AudioManager audioManager;
     public AudioSource audioSource;
-    public AudioClip clip;
+    public AudioClip matchClip;
 
     public Card firstTry;
     public Card secondTry;
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
         saveLevel = PlayerPrefs.GetInt("LoadLv");
         level = saveLevel;
         isCanOpen = true;
@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N1");
         
+        //브금 속도 조정
         if (time <= 10.0f && !pitchChanged)
         {
             StartCoroutine(GraduallyIncreasePitch(1.5f, 3.0f));
@@ -95,6 +96,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f;
             Result.SetActive(true);
             FailMsg.SetActive(true);
+
             if (level >= saveLevel)
             {
                 GameLvSave();
@@ -106,7 +108,7 @@ public class GameManager : MonoBehaviour
     {
         if (firstTry.idx == secondTry.idx)
         {
-            audioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(matchClip);
             
             firstTry.DestroyCard();
             secondTry.DestroyCard();
@@ -115,8 +117,10 @@ public class GameManager : MonoBehaviour
             {
                 Time.timeScale = 0.0f;
                 level += 1;
+
                 // 흘러간 시간 계산
                 elapsedTime = Time.time - startTime;
+
                 // 최고 기록 갱신
                 if (elapsedTime < bestTime)
                 {
@@ -124,6 +128,7 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetFloat("BestTime", bestTime); // 최고 기록 저장
                 PlayerPrefs.Save();
                 }
+
                 // UI 업데이트
                 CurrentTimeTxt.text = $"{elapsedTime:F1}초";
                 BestTimeTxt.text = $"{bestTime:F1}초";
