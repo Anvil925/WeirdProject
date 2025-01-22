@@ -16,6 +16,7 @@ public class Card : MonoBehaviour
     public SpriteRenderer frontImage;
 
     public int idx = 0;
+    public float LevelValue = 1;
     
     void Start()
     {
@@ -51,7 +52,10 @@ public class Card : MonoBehaviour
                 return;
             }
             anim.SetTrigger("isOpen");
-            Invoke("Match", 0.6f); // �Ǽ��� ������ ���� �����ϸ� ī�� ���� �� ���� ���ư��� ���̵� �ø� �� ����.
+
+            // 난이도 조절 가능. 카드 뒤집히는 속도
+            Invoke("Match", 0.5f / (LevelValue / 2)); 
+
             GameManager.Instance.isCanOpen = false;
             audioSource.PlayOneShot(clip, 0.3f);
         }

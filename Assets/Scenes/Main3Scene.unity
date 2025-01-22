@@ -628,6 +628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card: {fileID: 2501498762286117530, guid: c631aae3cc827b94db75b90749c6a2dd, type: 3}
+  Level: 3
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
