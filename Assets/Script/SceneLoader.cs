@@ -7,16 +7,8 @@ public class SceneLoader : MonoBehaviour
 {
     public Animator transition;
     public float transitionTime = 1f;
-
     // 버튼 연결
     public Button loadSceneButton;
-
-    private void Start()
-    {
-        // 버튼 클릭 이벤트 등록
-        loadSceneButton.onClick.AddListener(LoadNextLevel);
-    }
-
     public void LoadNextLevel()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
