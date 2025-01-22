@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject endTxt;
 
-    public int cardCount;
+    public int cardCount = 0;
     public bool isCanOpen = false;
     public int level = 1 ;
     public int hiddenLevel = 4;
@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
             {
                 if (toplevel >= saveLevel)
                 {
+                    toplevel = saveLevel;
                     GameLvSave();
                 }
             }
@@ -114,6 +115,7 @@ public class GameManager : MonoBehaviour
                 {
                     if (toplevel >= saveLevel)
                     {
+                        toplevel = saveLevel;
                         GameLvSave();
                     }
                 }
