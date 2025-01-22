@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject endTxt;
 
     public int cardCount = 0;
+
     public bool isCanOpen = true;
     float time = 0.0f;
     float timeLimit = 0.0f;
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
     public int level;
     public int hiddenLevel = 4;
 
+    int toplevel;
     int saveLevel;
 
 
@@ -39,11 +42,28 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+
         audioSource = GetComponent<AudioSource>();
-        saveLevel = PlayerPrefs.GetInt("LoadLv");
-        level = saveLevel;
+
         isCanOpen = true;
 
+        //Load set
+        string lv2 = PlayerPrefs.GetString("Loadlv2");
+        string lv3 = PlayerPrefs.GetString("Loadlv3");
+
+        if (lv2 == "2")
+        {
+
+            level = 2;
+            saveLevel = PlayerPrefs.GetInt("LoadLv");
+        }
+        else if (lv3 == "3")
+        {
+            level = 3;
+            saveLevel = PlayerPrefs.GetInt("LoadLv");
+        }
+
+        //level set
         if (level == 1)
         {
             timeLimit = 300.0f;
@@ -62,6 +82,8 @@ public class GameManager : MonoBehaviour
         }
         time = timeLimit;
         Time.timeScale = 1.0f;
+
+
     }
 
     void Update()
@@ -69,7 +91,7 @@ public class GameManager : MonoBehaviour
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N1");
 
-        //½ºÅ×ÀÌÁö ½Ã°£ÀÇ 1/3 º¸´Ù ½Ã°£ ¾È³²¾ÒÀ»¶§ÀÎµ¥ ¼öÁ¤ÇÏ¼Åµµ µË´Ï´Ù.
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ 1/3 ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½È³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼Åµï¿½ ï¿½Ë´Ï´ï¿½.
         if ((timeLimit / 3) >= time) 
         {
             timeAnim.SetBool("isTimeLimit", true);
@@ -78,18 +100,29 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0f;
                 if (level >= saveLevel)
                 {
+
+        if ( time <=endtime)
+        {
+            Time.timeScale = 0f;
+            if (level >= toplevel)
+            {
+                if (toplevel >= saveLevel)
+                {
+                    toplevel = saveLevel;
                     GameLvSave();
                 }
             }
         }
+
     }
+
 
     public void Matched()
     {
-        if (firstTry.idx == secondTry.idx) // µÎ Ä«µå°¡ °°À¸¸é »èÁ¦ 
+        if (firstTry.idx == secondTry.idx) // ï¿½ï¿½ Ä«ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
         {
             audioSource.PlayOneShot(clip);
-            
+
             firstTry.DestroyCard();
             secondTry.DestroyCard();
             cardCount -= 2;
@@ -97,9 +130,13 @@ public class GameManager : MonoBehaviour
             {
                 Time.timeScale = 0.0f;
                 level += 1;
-                if (level >= saveLevel)
+                if (level >= toplevel)
                 {
-                    GameLvSave();
+                    if (toplevel >= saveLevel)
+                    {
+                        toplevel = saveLevel;
+                        GameLvSave();
+                    }
                 }
             }
         }
@@ -110,14 +147,13 @@ public class GameManager : MonoBehaviour
             firstTry.CloseCard();
             secondTry.CloseCard();
         }
-        firstTry = null;
-        secondTry = null;
+            firstTry = null;
+            secondTry = null;
     }
 
     public void GameLvSave()
     {
-        PlayerPrefs.SetInt("GameLv", level);
+        PlayerPrefs.SetInt("GameLv", toplevel);
         PlayerPrefs.Save();
     }
-
 }
