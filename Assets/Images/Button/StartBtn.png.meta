@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 86bb0f5edaa80495b88545e65af51518
+guid: 9337e327acf404de39269329c69f80e9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,28 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: StartBtn_0
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 598
+        width: 649
+        height: 210
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29601b1e296bd49e5857f57dd0988028
+      internalID: -1153490188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      StartBtn_0: -1153490188
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
