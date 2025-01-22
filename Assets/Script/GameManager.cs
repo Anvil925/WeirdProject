@@ -17,7 +17,9 @@ public class GameManager : MonoBehaviour
     public Text timeTxt;
 
     public GameObject endTxt;
-
+    public GameObject Result;
+    public GameObject FailMsg;
+    public GameObject CrealMSg;
     public int cardCount = 0;
     public bool isCanOpen = true;
     float time = 0.0f;
@@ -72,6 +74,8 @@ public class GameManager : MonoBehaviour
         if (time <= endtime)
         {
             Time.timeScale = 0f;
+            Result.SetActive(true);
+            FailMsg.SetActive(true);
             if (level >= saveLevel)
             {
                 GameLvSave();
@@ -92,6 +96,8 @@ public class GameManager : MonoBehaviour
             {
                 Time.timeScale = 0.0f;
                 level += 1;
+                Result.SetActive(true);
+                CrealMSg.SetActive(true);
                 if (level >= saveLevel)
                 {
                     GameLvSave();
