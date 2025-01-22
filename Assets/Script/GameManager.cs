@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         saveLevel = PlayerPrefs.GetInt("LoadLv");
         level = saveLevel;
+        isCanOpen = true;
 
         if (level == 1)
         {
