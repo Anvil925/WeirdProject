@@ -519,11 +519,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b675b65a3f77b9c4184186b208078079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPosition_game: {x: -3, y: -1}
-  StartPosition_member: {x: 3, y: 1.2}
-  upVec: {x: 4, y: 2, z: 0}
-  Speed: 0.5
-  Opacity: 0.8
+  StartPosition_game: {x: -3, y: 2.3}
+  StartPosition_member: {x: 3, y: 0}
+  upVec: {x: 4, y: 1, z: 0}
+  Speed: 1
+  CardDistance: 0.5
+  Opacity: 0.9
   CardRotation: 0
   game0: {fileID: 3938498266516538985, guid: 107d6b32d0f0b31469f8021d1db176ae, type: 3}
   game1: {fileID: 680303830363726461, guid: d12c78677f302b948a380bee1469e3e4, type: 3}
@@ -1671,7 +1672,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.072
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2301,18 +2302,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8372454852759319008, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8372454852759319008, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
-      propertyPath: m_Color.g
-      value: 0.8421554
-      objectReference: {fileID: 0}
-    - target: {fileID: 8372454852759319008, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
-      propertyPath: m_Color.r
-      value: 0.5235849
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2325,8 +2314,8 @@ SceneRoots:
   - {fileID: 2850168145457677277}
   - {fileID: 520813122}
   - {fileID: 1718505808}
-  - {fileID: 1403571444}
   - {fileID: 1248076779}
+  - {fileID: 1403571444}
   - {fileID: 1709983971}
   - {fileID: 589579518}
   - {fileID: 247277312}

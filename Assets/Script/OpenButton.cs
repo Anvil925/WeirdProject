@@ -7,6 +7,7 @@ public class OpenButton : MonoBehaviour
 {
     public void Open()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("OpenScene");
     }
 }
