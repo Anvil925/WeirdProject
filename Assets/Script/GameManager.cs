@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public Text timeTxt;
 
     public int cardCount = 0;
-    public bool isCanOpen = false;
+    public bool isCanOpen = true;
     float time = 0.0f;
 
     private void Awake()
