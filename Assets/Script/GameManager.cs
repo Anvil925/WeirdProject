@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0f;
             Result.SetActive(true);
-
+            Time.timeScale = 1;
             if (cardCount > 0)
             {  
                 audioSource.PlayOneShot(failClip, 0.03f);
