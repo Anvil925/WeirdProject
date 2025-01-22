@@ -523,6 +523,8 @@ MonoBehaviour:
   StartPosition_member: {x: 3, y: 1.2}
   upVec: {x: 4, y: 2, z: 0}
   Speed: 0.5
+  Opacity: 0.8
+  CardRotation: 0
   game0: {fileID: 3938498266516538985, guid: 107d6b32d0f0b31469f8021d1db176ae, type: 3}
   game1: {fileID: 680303830363726461, guid: d12c78677f302b948a380bee1469e3e4, type: 3}
   game2: {fileID: 3459294523670373012, guid: dd12d44339fc1c044be893ad162253f0, type: 3}
@@ -1222,7 +1224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1403571441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1470,7 +1472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1626543899
 RectTransform:
   m_ObjectHideFlags: 0
