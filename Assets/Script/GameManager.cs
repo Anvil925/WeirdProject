@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,16 +20,17 @@ public class GameManager : MonoBehaviour
     public GameObject endTxt;
 
     public int cardCount = 0;
-    public bool isCanOpen = false;
-    public int level = 1 ;
-    public int hiddenLevel = 4;
 
+    public bool isCanOpen = true;
+    float time = 0.0f;
+    float endtime = 0f;
+
+    public int level;
+    public int hiddenLevel = 4;
 
     int toplevel;
     int saveLevel;
 
-    float time;
-    float endtime = 0f;
 
     private void Awake()
     {
@@ -40,6 +42,8 @@ public class GameManager : MonoBehaviour
     {
 
         audioSource = GetComponent<AudioSource>();
+
+        isCanOpen = true;
 
         //Load set
         string lv2 = PlayerPrefs.GetString("Loadlv2");
@@ -57,6 +61,7 @@ public class GameManager : MonoBehaviour
             saveLevel = PlayerPrefs.GetInt("LoadLv");
         }
 
+        //level set
         if (level == 1)
         {
             time = 300.0f;
@@ -77,6 +82,8 @@ public class GameManager : MonoBehaviour
 
         }
         Time.timeScale = 1.0f;
+
+
     }
 
     void Update()
@@ -84,7 +91,8 @@ public class GameManager : MonoBehaviour
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N1");
 
-        if (time <= endtime)
+
+        if ( time <=endtime)
         {
             Time.timeScale = 0f;
             if (level >= toplevel)
@@ -96,14 +104,16 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
     }
+
 
     public void Matched()
     {
         if (firstTry.idx == secondTry.idx)
         {
             audioSource.PlayOneShot(clip);
-            
+
             firstTry.DestroyCard();
             secondTry.DestroyCard();
             cardCount -= 2;
@@ -126,8 +136,8 @@ public class GameManager : MonoBehaviour
             firstTry.CloseCard();
             secondTry.CloseCard();
         }
-        firstTry = null;
-        secondTry = null;
+            firstTry = null;
+            secondTry = null;
     }
 
     public void GameLvSave()
