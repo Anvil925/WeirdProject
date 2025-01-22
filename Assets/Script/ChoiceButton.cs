@@ -32,6 +32,6 @@ public class ChoiceButton : MonoBehaviour
     }
     public void BackScene()
     {
-        SceneManager.LoadScene("OpenScene");
+        SceneManager.LoadScene("OpenScene");/1
     }
 }
