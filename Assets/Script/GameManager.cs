@@ -134,11 +134,6 @@ public class GameManager : MonoBehaviour
                 audioSource.PlayOneShot(failClip, 0.05f);
                 FailMsg.SetActive(true);
             }
-            else
-            {
-                audioSource.PlayOneShot(successClip, 0.05f);
-                CrealMSg.SetActive(true);
-            }
             
             if (level <= toplevel)
             {
@@ -164,6 +159,7 @@ public class GameManager : MonoBehaviour
 
             if (cardCount == 0)
             {
+                audioSource.PlayOneShot(successClip, 0.05f);
                 Time.timeScale = 0.0f;
                 level += 1;
 
@@ -177,10 +173,10 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.Save();
                 }
 
+                CrealMSg.SetActive(true);
                 CurrentTimeTxt.text = $"{elapsedTime:F1}��";
                 BestTimeTxt.text = $"{bestTime:F1}��";
                 Result.SetActive(true);
-                CrealMSg.SetActive(true);
                 Time.timeScale = 1;
                 if (level >= saveLevel)
                 {
