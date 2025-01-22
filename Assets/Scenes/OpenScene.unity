@@ -1674,7 +1674,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.072
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2303,6 +2303,18 @@ PrefabInstance:
     - target: {fileID: 6935468738158639312, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8372454852759319008, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8372454852759319008, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8294278
+      objectReference: {fileID: 0}
+    - target: {fileID: 8372454852759319008, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.504717
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
