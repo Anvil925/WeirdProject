@@ -525,7 +525,7 @@ MonoBehaviour:
   upVec: {x: 4, y: 1, z: 0}
   Speed: 1
   CardDistance: 0.5
-  Opacity: 0.9
+  Opacity: 0.95
   CardRotation: 0
   game0: {fileID: 3938498266516538985, guid: 107d6b32d0f0b31469f8021d1db176ae, type: 3}
   game1: {fileID: 680303830363726461, guid: d12c78677f302b948a380bee1469e3e4, type: 3}
