@@ -55,6 +55,9 @@ public class Card : MonoBehaviour
             GameManager.Instance.isCanOpen = false;
             audioSource.PlayOneShot(clip);
         }
+        audioSource.PlayOneShot(clip, 0.5f);
+
+
     }
 
     public void DestroyCard()

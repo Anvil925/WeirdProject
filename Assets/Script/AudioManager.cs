@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    
     public AudioSource audioSource;
     public AudioClip clip;
 
     private void Awake()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
+
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-
-        audioSource.clip = this.clip;
+        audioSource.clip = clip;
         audioSource.Play();
     }
-    void Update()
+
+    public void SetPitch(float newPitch)
     {
-        
+        audioSource.pitch = newPitch;
     }
 }

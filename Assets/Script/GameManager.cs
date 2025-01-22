@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,29 +8,42 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public AudioManager audioManager;
     public AudioSource audioSource;
-    public AudioClip clip;
+    public AudioClip matchClip;
+    public AudioClip failClip;
+    public AudioClip successClip;
 
     public Card firstTry;
     public Card secondTry;
 
     public Text timeTxt;
+    public Text CurrentTimeTxt;
+    public Text BestTimeTxt;
+
 
     public Animator timeAnim;
 
     public GameObject endTxt;
-
+    public GameObject Result;
+    public GameObject FailMsg;
+    public GameObject CrealMSg;
     public int cardCount = 0;
-
     public bool isCanOpen = true;
+    private float startTime;  // 게임 시작 시간
+    private float elapsedTime; // 흘러간 시간
+    private float bestTime;   // 최고 기록
+    private bool pitchChanged = false;
+
     float time = 0.0f;
     float timeLimit = 0.0f;
     float endtime = 0f;
+    
 
     public int level;
+    public int toplevel;
     public int hiddenLevel = 4;
 
-    int toplevel;
     int saveLevel;
 
 
@@ -42,28 +54,14 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
-        audioSource = GetComponent<AudioSource>();
-
+        //audioSource = GetComponent<AudioSource>();
+        saveLevel = PlayerPrefs.GetInt("LoadLv");
+        level = saveLevel;
         isCanOpen = true;
 
-        //Load set
-        string lv2 = PlayerPrefs.GetString("Loadlv2");
-        string lv3 = PlayerPrefs.GetString("Loadlv3");
-
-        if (lv2 == "2")
-        {
-
-            level = 2;
-            saveLevel = PlayerPrefs.GetInt("LoadLv");
-        }
-        else if (lv3 == "3")
-        {
-            level = 3;
-            saveLevel = PlayerPrefs.GetInt("LoadLv");
-        }
-
-        //level set
+        bestTime = PlayerPrefs.GetFloat("BestTime", float.MaxValue); // 최고 기록 로드
+        // 게임 시작 시간 초기화
+        startTime = Time.time;
         if (level == 1)
         {
             timeLimit = 300.0f;
@@ -82,13 +80,12 @@ public class GameManager : MonoBehaviour
         }
         time = timeLimit;
         Time.timeScale = 1.0f;
-
-
     }
 
     void Update()
     {
         time -= Time.deltaTime;
+        time = Mathf.Max(time, 0.0f);
         timeTxt.text = time.ToString("N1");
 
         //�������� �ð��� 1/3 ���� �ð� �ȳ��������ε� �����ϼŵ� �˴ϴ�.
@@ -108,37 +105,83 @@ public class GameManager : MonoBehaviour
                             if (toplevel >= saveLevel)
                             {
                                 toplevel = saveLevel;
-                                GameLvSave();
+                                //GameLvSave();
                             }
                         }
                     }
                 }
             }
         }
-    }
     
+    
+
+        
+        //브금 속도 조정
+        if (time <= 10.0f && !pitchChanged)
+        {
+            StartCoroutine(GraduallyIncreasePitch(1.5f, 3.0f));
+            pitchChanged = true;
+        }
+        
+        if (time <= endtime)
+        {
+            Time.timeScale = 0f;
+            Result.SetActive(true);
+
+            if (cardCount > 0)
+            {  
+                audioSource.PlayOneShot(failClip, 0.03f);
+                FailMsg.SetActive(true);
+            }
+            else
+            {
+                audioSource.PlayOneShot(successClip, 0.03f);
+                CrealMSg.SetActive(true);
+            }
+            
+            if (level >= saveLevel)
+            {
+                GameLvSave();
+            }
+        }
+    }
 
     public void Matched()
     {
         if (firstTry.idx == secondTry.idx) // �� ī�尡 ������ ���� 
 
         {
-            audioSource.PlayOneShot(clip);
-
+            audioSource.PlayOneShot(matchClip);
+            
             firstTry.DestroyCard();
             secondTry.DestroyCard();
             cardCount -= 2;
+
             if (cardCount == 0)
             {
                 Time.timeScale = 0.0f;
                 level += 1;
-                if (level >= toplevel)
+
+                // 흘러간 시간 계산
+                elapsedTime = Time.time - startTime;
+
+                // 최고 기록 갱신
+                if (elapsedTime < bestTime)
                 {
-                    if (toplevel >= saveLevel)
-                    {
-                        toplevel = saveLevel;
-                        GameLvSave();
-                    }
+                bestTime = elapsedTime;
+                PlayerPrefs.SetFloat("BestTime", bestTime); // 최고 기록 저장
+                PlayerPrefs.Save();
+                }
+
+                // UI 업데이트
+                CurrentTimeTxt.text = $"{elapsedTime:F1}초";
+                BestTimeTxt.text = $"{bestTime:F1}초";
+                Result.SetActive(true);
+                CrealMSg.SetActive(true);
+                Time.timeScale = 1;
+                if (level >= saveLevel)
+                {
+                    GameLvSave();
                 }
             }
         }
@@ -151,7 +194,21 @@ public class GameManager : MonoBehaviour
 
     public void GameLvSave()
     {
-        PlayerPrefs.SetInt("GameLv", toplevel);
+        PlayerPrefs.SetInt("GameLv", level);
         PlayerPrefs.Save();
+    }
+
+    //브금 빠르게 하기 용
+    IEnumerator GraduallyIncreasePitch(float targetPitch, float duration)
+    {
+        float startPitch = audioManager.audioSource.pitch;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            audioManager.audioSource.pitch = Mathf.Lerp(startPitch, targetPitch, elapsed / duration);
+            yield return null;
+        }
     }
 }
