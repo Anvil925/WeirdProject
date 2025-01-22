@@ -8,7 +8,6 @@ public class StartBtn : MonoBehaviour
     public void Btn_Start()
     {
         Debug.Log("StartBtn");
-        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("MainScene");
     }
 }

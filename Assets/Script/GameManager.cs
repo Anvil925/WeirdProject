@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     float endtime = 0f;
     
 
-    public int level = 1;
+    int level = 1;
     public int hiddenLevel = 4;
 
 
@@ -53,13 +53,12 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.DeleteAll();
         //audioSource = GetComponent<AudioSource>();
-
+        Debug.Log(level);
         isCanOpen = true;
 
         string lv2 = PlayerPrefs.GetString("Loadlv2");
-        string lv3 = PlayerPrefs.GetString("Loadlv2");
+        string lv3 = PlayerPrefs.GetString("Loadlv3");
         bestTime = PlayerPrefs.GetFloat("BestTime", float.MaxValue);
 
         if (lv2 == "2")
@@ -165,7 +164,7 @@ public class GameManager : MonoBehaviour
                 BestTimeTxt.text = $"{bestTime:F1}ÃÊ";
                 Result.SetActive(true);
                 CrealMSg.SetActive(true);
-                Time.timeScale = 1;
+                Time.timeScale = 0f;
                 if (level >= toplevel)
                 {
                     if (toplevel >= saveLevel)
