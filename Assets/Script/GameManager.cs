@@ -83,10 +83,9 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
     public void Matched()
     {
-        if (firstTry.idx == secondTry.idx) // 두 카드가 같으면 삭제 
+        if (firstTry.idx == secondTry.idx) 
         {
             audioSource.PlayOneShot(clip);
             
@@ -105,13 +104,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //firstTry.anim.SetBool("isOpen", false);
-            //secondTry.anim.SetBool("isOpen", false);
-            firstTry.CloseCard();
-            secondTry.CloseCard();
+            firstTry.anim.SetTrigger("isClose");
+            secondTry.anim.SetTrigger("isClose");
         }
-        firstTry = null;
-        secondTry = null;
     }
 
     public void GameLvSave()
