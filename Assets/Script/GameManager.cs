@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            timeLimit = 60.0f;
+            timeLimit = 30.0f;
         }
         time = timeLimit;
         Time.timeScale = 1.0f;
@@ -112,12 +112,9 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-    
-    
-
         
         //브금 속도 조정
-        if (time <= 10.0f && !pitchChanged)
+        if (time <= (timeLimit / 3) && !pitchChanged)
         {
             StartCoroutine(GraduallyIncreasePitch(1.5f, 3.0f));
             pitchChanged = true;
