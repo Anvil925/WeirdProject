@@ -153,8 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1392938ffa9d843cab8a6fd4bd6c37a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 848469656}
   audioSource: {fileID: 0}
   clip: {fileID: 8300000, guid: 4d83a167f74a547bfad59dd2fa219b0f, type: 3}
+  tenseClip: {fileID: 8300000, guid: 1d65ebfa5856a492389c397b351e525a, type: 3}
   firstTry: {fileID: 0}
   secondTry: {fileID: 0}
   timeTxt: {fileID: 1894322580}

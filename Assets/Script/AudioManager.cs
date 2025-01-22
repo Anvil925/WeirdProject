@@ -10,17 +10,15 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-
         audioSource.clip = this.clip;
         audioSource.Play();
     }
-    void Update()
+    public void SetPitch(float newPitch)
     {
-        
+        audioSource.pitch = newPitch;
     }
 }

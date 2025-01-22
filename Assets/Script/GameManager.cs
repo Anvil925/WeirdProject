@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public AudioManager audioManager;
     public AudioSource audioSource;
     public AudioClip clip;
 
@@ -28,7 +29,7 @@ public class GameManager : MonoBehaviour
     private float startTime;  // 게임 시작 시간
     private float elapsedTime; // 흘러간 시간
     private float bestTime;   // 최고 기록
-  
+    private bool pitchChanged = false;
 
     float time = 0.0f;
     float endtime = 0f;
@@ -82,6 +83,12 @@ public class GameManager : MonoBehaviour
     {
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N1");
+        
+        if (time <= 10.0f && !pitchChanged)
+        {
+            audioManager.SetPitch(1.5f);
+            pitchChanged = true;
+        }
         
         if (time <= endtime)
         {
