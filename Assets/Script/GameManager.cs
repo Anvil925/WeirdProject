@@ -19,14 +19,15 @@ public class GameManager : MonoBehaviour
     public GameObject endTxt;
 
     public int cardCount = 0;
-    public bool isCanOpen = false;
+    public bool isCanOpen = true;
+    float time = 0.0f;
+    float endtime = 0f;
+
     public int level;
     public int hiddenLevel = 4;
 
     int saveLevel;
 
-    float time;
-    float endtime = 0f;
 
     private void Awake()
     {
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         saveLevel = PlayerPrefs.GetInt("LoadLv");
         level = saveLevel;
+        isCanOpen = true;
 
         if (level == 1)
         {
