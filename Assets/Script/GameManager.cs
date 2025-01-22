@@ -42,7 +42,6 @@ public class GameManager : MonoBehaviour
 
     int level = 1;
     int toplevel;
-    int hiddenLevel = 4;
 
     int saveLevel;
 
