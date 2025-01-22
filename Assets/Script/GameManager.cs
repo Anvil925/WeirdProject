@@ -17,12 +17,15 @@ public class GameManager : MonoBehaviour
 
     public Text timeTxt;
 
+    public Animator timeAnim;
+
     public GameObject endTxt;
 
     public int cardCount = 0;
 
     public bool isCanOpen = true;
     float time = 0.0f;
+    float timeLimit = 0.0f;
     float endtime = 0f;
 
     public int level;
@@ -36,7 +39,6 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null) Instance = this;
     }
-
 
     void Start()
     {
@@ -64,23 +66,21 @@ public class GameManager : MonoBehaviour
         //level set
         if (level == 1)
         {
-            time = 300.0f;
+            timeLimit = 300.0f;
         }
         else if (level == 2)
         {
-            time = 180.0f;
-
+            timeLimit = 180.0f;
         }
         else if (level == 3)
         {
-            time = 60.0f;
-
+            timeLimit = 60.0f;
         }
         else
         {
-            time = 30.0f;
-
+            timeLimit = 60.0f;
         }
+        time = timeLimit;
         Time.timeScale = 1.0f;
 
 
@@ -91,6 +91,15 @@ public class GameManager : MonoBehaviour
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N1");
 
+        //�������� �ð��� 1/3 ���� �ð� �ȳ��������ε� �����ϼŵ� �˴ϴ�.
+        if ((timeLimit / 3) >= time) 
+        {
+            timeAnim.SetBool("isTimeLimit", true);
+            if (time <= endtime)
+            {
+                Time.timeScale = 0f;
+                if (level >= saveLevel)
+                {
 
         if ( time <=endtime)
         {
@@ -110,7 +119,7 @@ public class GameManager : MonoBehaviour
 
     public void Matched()
     {
-        if (firstTry.idx == secondTry.idx)
+        if (firstTry.idx == secondTry.idx) // �� ī�尡 ������ ���� 
         {
             audioSource.PlayOneShot(clip);
 
@@ -133,6 +142,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            //firstTry.anim.SetBool("isOpen", false);
+            //secondTry.anim.SetBool("isOpen", false);
             firstTry.CloseCard();
             secondTry.CloseCard();
         }
