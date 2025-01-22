@@ -530,10 +530,12 @@ MonoBehaviour:
   game1: {fileID: 680303830363726461, guid: d12c78677f302b948a380bee1469e3e4, type: 3}
   game2: {fileID: 3459294523670373012, guid: dd12d44339fc1c044be893ad162253f0, type: 3}
   game3: {fileID: 598241071754149507, guid: 6f1bcdaeea7de6346969e031938ce19d, type: 3}
+  game4: {fileID: 598241071754149507, guid: e7a87dbbc5b195c4ea8530d4340658d5, type: 3}
   member0: {fileID: 2047305560176803331, guid: 7abdde2f453c94b46b73ae6cd682f557, type: 3}
   member1: {fileID: 189743556250248221, guid: 642f39d948ec1624898e97ecf1e9adc2, type: 3}
   member2: {fileID: 1736324147451852908, guid: 70869d3d6dec1f440b98a71faa16ddca, type: 3}
   member3: {fileID: 2819745987855607474, guid: 79dc01ca5372ed843a7132a50325da81, type: 3}
+  member4: {fileID: 2819745987855607474, guid: 291860ebbe0e0234e894107186a3dba0, type: 3}
 --- !u!1 &624875677
 GameObject:
   m_ObjectHideFlags: 0
