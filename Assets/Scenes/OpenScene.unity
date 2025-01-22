@@ -1671,7 +1671,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.072
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2301,6 +2301,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8372454852759319008, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8372454852759319008, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8421554
+      objectReference: {fileID: 0}
+    - target: {fileID: 8372454852759319008, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5235849
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2313,8 +2325,8 @@ SceneRoots:
   - {fileID: 2850168145457677277}
   - {fileID: 520813122}
   - {fileID: 1718505808}
-  - {fileID: 1248076779}
   - {fileID: 1403571444}
+  - {fileID: 1248076779}
   - {fileID: 1709983971}
   - {fileID: 589579518}
   - {fileID: 247277312}
