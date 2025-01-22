@@ -19,14 +19,16 @@ public class CardBoard : MonoBehaviour
     public GameObject game1;
     public GameObject game2;
     public GameObject game3;
+    public GameObject game4;
 
     public GameObject member0;
     public GameObject member1;
     public GameObject member2;
     public GameObject member3;
+    public GameObject member4;
 
-    GameObject[] gameArr = new GameObject[4];
-    GameObject[] memberArr = new GameObject[4];
+    GameObject[] gameArr = new GameObject[5];
+    GameObject[] memberArr = new GameObject[5];
 
     GameObject[] gArr = new GameObject[RepeatCount];
     GameObject[] mArr = new GameObject[RepeatCount];
@@ -65,10 +67,12 @@ public class CardBoard : MonoBehaviour
         gameArr[1] = game1;
         gameArr[2] = game2;
         gameArr[3] = game3;
+        gameArr[4] = game4;
         memberArr[0] = member0;
         memberArr[1] = member1;
         memberArr[2] = member2;
         memberArr[3] = member3;
+        memberArr[4] = member4;
     }
 
     // 카드 생성 함수
