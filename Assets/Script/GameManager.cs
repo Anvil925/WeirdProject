@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         
         if (time <= 10.0f && !pitchChanged)
         {
-            audioManager.SetPitch(1.5f);
+            StartCoroutine(GraduallyIncreasePitch(1.5f, 3.0f));
             pitchChanged = true;
         }
         
@@ -150,4 +150,17 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    //브금 빠르게 하기 용
+    IEnumerator GraduallyIncreasePitch(float targetPitch, float duration)
+    {
+        float startPitch = audioManager.audioSource.pitch;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            audioManager.audioSource.pitch = Mathf.Lerp(startPitch, targetPitch, elapsed / duration);
+            yield return null;
+        }
+    }
 }
