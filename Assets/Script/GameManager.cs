@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     public Card secondTry;
 
     public Text timeTxt;
+    public Text CurrentTimeTxt;
+    public Text BestTimeTxt;
+
 
     public GameObject endTxt;
     public GameObject Result;
@@ -22,8 +25,14 @@ public class GameManager : MonoBehaviour
     public GameObject CrealMSg;
     public int cardCount = 0;
     public bool isCanOpen = true;
+    private float startTime;  // 게임 시작 시간
+    private float elapsedTime; // 흘러간 시간
+    private float bestTime;   // 최고 기록
+  
+
     float time = 0.0f;
     float endtime = 0f;
+    
 
     public int level;
     public int hiddenLevel = 4;
@@ -44,6 +53,9 @@ public class GameManager : MonoBehaviour
         level = saveLevel;
         isCanOpen = true;
 
+        bestTime = PlayerPrefs.GetFloat("BestTime", float.MaxValue); // 최고 기록 로드
+        // 게임 시작 시간 초기화
+        startTime = Time.time;
         if (level == 1)
         {
             time = 300.0f;
@@ -96,6 +108,18 @@ public class GameManager : MonoBehaviour
             {
                 Time.timeScale = 0.0f;
                 level += 1;
+                // 흘러간 시간 계산
+                elapsedTime = Time.time - startTime;
+                // 최고 기록 갱신
+                if (elapsedTime < bestTime)
+                {
+                bestTime = elapsedTime;
+                PlayerPrefs.SetFloat("BestTime", bestTime); // 최고 기록 저장
+                PlayerPrefs.Save();
+                }
+                // UI 업데이트
+                CurrentTimeTxt.text = $"{elapsedTime:F1}초";
+                BestTimeTxt.text = $"{bestTime:F1}초";
                 Result.SetActive(true);
                 CrealMSg.SetActive(true);
                 if (level >= saveLevel)
