@@ -14,6 +14,7 @@ public class CardBoard : MonoBehaviour
     public float Opacity = 1f;
     public float CardRotation = 0f;
 
+    // 카드 생성 반복 횟수
     public static int RepeatCount = 20;
 
     public GameObject game0;
@@ -28,9 +29,11 @@ public class CardBoard : MonoBehaviour
     public GameObject member3;
     public GameObject member4;
 
-    GameObject[] gameArr = new GameObject[5];
-    GameObject[] memberArr = new GameObject[5];
+    // 각각 카드 초기화 리스트
+    GameObject[] gameArr = new GameObject[4];
+    GameObject[] memberArr = new GameObject[4];
 
+    // 각각 생성된 이미지 리스트
     GameObject[] gArr = new GameObject[RepeatCount];
     GameObject[] mArr = new GameObject[RepeatCount];
 
@@ -60,12 +63,10 @@ public class CardBoard : MonoBehaviour
         gameArr[1] = game1;
         gameArr[2] = game2;
         gameArr[3] = game3;
-        gameArr[4] = game4;
         memberArr[0] = member0;
         memberArr[1] = member1;
         memberArr[2] = member2;
         memberArr[3] = member3;
-        memberArr[4] = member4;
     }
 
     // 카드 생성 함수
@@ -104,6 +105,7 @@ public class CardBoard : MonoBehaviour
     }
 
     // 숫자 부호를 bool 값으로 입력 받아, float값으로 출력
+    // true: 양수, false: 음수
     float Signed(bool b)
     {
         return b ? 1f : -1f;
@@ -128,12 +130,14 @@ public class CardBoard : MonoBehaviour
                 num = inArr.Length - 1;
 
             Vector3 position = inArr[i].transform.position;
+
+            // 게임 카드의 재조정 조건             || 팀원 카드의 재조정 조건
             if ((position.x < -3.5f && signed > 0) || (position.x > 3.5f && signed < 0))
             {
                 float x = signed * CardDistance * upVec.x + inArr[num].transform.position.x;
                 float y = signed * CardDistance * upVec.y + inArr[num].transform.position.y;
                 Vector3 newPos = new Vector3(x, y, 0);
-                Debug.Log($"\nnewPos : {newPos}\nupVec : {upVec}");
+                //Debug.Log($"\nnewPos : {newPos}\nupVec : {upVec}");
                 inArr[i].transform.position = newPos;
             }
         }
