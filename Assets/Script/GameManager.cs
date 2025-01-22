@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         time -= Time.deltaTime;
+        time = Mathf.Max(time, 0.0f);
         timeTxt.text = time.ToString("N1");
         
         //브금 속도 조정
@@ -96,7 +97,6 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f;
             Result.SetActive(true);
             FailMsg.SetActive(true);
-
             if (level >= saveLevel)
             {
                 GameLvSave();
@@ -134,6 +134,7 @@ public class GameManager : MonoBehaviour
                 BestTimeTxt.text = $"{bestTime:F1}초";
                 Result.SetActive(true);
                 CrealMSg.SetActive(true);
+                Time.timeScale = 1;
                 if (level >= saveLevel)
                 {
                     GameLvSave();
