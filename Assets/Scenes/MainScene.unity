@@ -158,6 +158,8 @@ MonoBehaviour:
   firstTry: {fileID: 0}
   secondTry: {fileID: 0}
   timeTxt: {fileID: 1894322580}
+  CurrentTimeTxt: {fileID: 391103021}
+  BestTimeTxt: {fileID: 757903538}
   endTxt: {fileID: 0}
   Result: {fileID: 1402936463}
   FailMsg: {fileID: 1938469384}
@@ -492,7 +494,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 00.00
+  m_Text: 00.0
 --- !u!222 &391103022
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -800,7 +802,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 00.00
+  m_Text: 00.0
 --- !u!222 &757903539
 CanvasRenderer:
   m_ObjectHideFlags: 0
