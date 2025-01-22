@@ -519,20 +519,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b675b65a3f77b9c4184186b208078079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPosition_game: {x: -3, y: -1}
-  StartPosition_member: {x: 3, y: 1.2}
-  upVec: {x: 4, y: 2, z: 0}
-  Speed: 0.5
-  Opacity: 0.8
+  StartPosition_game: {x: -3, y: 2.3}
+  StartPosition_member: {x: 3, y: 0}
+  upVec: {x: 4, y: 1, z: 0}
+  Speed: 1
+  CardDistance: 0.5
+  Opacity: 0.9
   CardRotation: 0
   game0: {fileID: 3938498266516538985, guid: 107d6b32d0f0b31469f8021d1db176ae, type: 3}
   game1: {fileID: 680303830363726461, guid: d12c78677f302b948a380bee1469e3e4, type: 3}
   game2: {fileID: 3459294523670373012, guid: dd12d44339fc1c044be893ad162253f0, type: 3}
   game3: {fileID: 598241071754149507, guid: 6f1bcdaeea7de6346969e031938ce19d, type: 3}
+  game4: {fileID: 598241071754149507, guid: e7a87dbbc5b195c4ea8530d4340658d5, type: 3}
   member0: {fileID: 2047305560176803331, guid: 7abdde2f453c94b46b73ae6cd682f557, type: 3}
   member1: {fileID: 189743556250248221, guid: 642f39d948ec1624898e97ecf1e9adc2, type: 3}
   member2: {fileID: 1736324147451852908, guid: 70869d3d6dec1f440b98a71faa16ddca, type: 3}
   member3: {fileID: 2819745987855607474, guid: 79dc01ca5372ed843a7132a50325da81, type: 3}
+  member4: {fileID: 2819745987855607474, guid: 291860ebbe0e0234e894107186a3dba0, type: 3}
 --- !u!1 &624875677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1671,7 +1674,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2307,11 +2310,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8372454852759319008, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
       propertyPath: m_Color.g
-      value: 0.8421554
+      value: 0.8294278
       objectReference: {fileID: 0}
     - target: {fileID: 8372454852759319008, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
       propertyPath: m_Color.r
-      value: 0.5235849
+      value: 0.504717
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2325,8 +2328,8 @@ SceneRoots:
   - {fileID: 2850168145457677277}
   - {fileID: 520813122}
   - {fileID: 1718505808}
-  - {fileID: 1403571444}
   - {fileID: 1248076779}
+  - {fileID: 1403571444}
   - {fileID: 1709983971}
   - {fileID: 589579518}
   - {fileID: 247277312}
