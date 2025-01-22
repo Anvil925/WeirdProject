@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public AudioManager audioManager;
     public AudioSource audioSource;
     public AudioClip clip;
 
@@ -28,7 +29,7 @@ public class GameManager : MonoBehaviour
     private float startTime;  // 게임 시작 시간
     private float elapsedTime; // 흘러간 시간
     private float bestTime;   // 최고 기록
-  
+    private bool pitchChanged = false;
 
     float time = 0.0f;
     float endtime = 0f;
@@ -81,13 +82,21 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         time -= Time.deltaTime;
+        time = Mathf.Max(time, 0.0f);
         timeTxt.text = time.ToString("N1");
+        
+        if (time <= 10.0f && !pitchChanged)
+        {
+            StartCoroutine(GraduallyIncreasePitch(1.5f, 3.0f));
+            pitchChanged = true;
+        }
         
         if (time <= endtime)
         {
             Time.timeScale = 0f;
             Result.SetActive(true);
             FailMsg.SetActive(true);
+            Time.timeScale = 1;
             if (level >= saveLevel)
             {
                 GameLvSave();
@@ -122,6 +131,7 @@ public class GameManager : MonoBehaviour
                 BestTimeTxt.text = $"{bestTime:F1}초";
                 Result.SetActive(true);
                 CrealMSg.SetActive(true);
+                Time.timeScale = 1;
                 if (level >= saveLevel)
                 {
                     GameLvSave();
@@ -143,4 +153,17 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    //브금 빠르게 하기 용
+    IEnumerator GraduallyIncreasePitch(float targetPitch, float duration)
+    {
+        float startPitch = audioManager.audioSource.pitch;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            audioManager.audioSource.pitch = Mathf.Lerp(startPitch, targetPitch, elapsed / duration);
+            yield return null;
+        }
+    }
 }
