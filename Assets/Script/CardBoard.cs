@@ -30,8 +30,8 @@ public class CardBoard : MonoBehaviour
     public GameObject member4;
 
     // 각각 카드 초기화 리스트
-    GameObject[] gameArr = new GameObject[4];
-    GameObject[] memberArr = new GameObject[4];
+    GameObject[] gameArr = new GameObject[5];
+    GameObject[] memberArr = new GameObject[5];
 
     // 각각 생성된 이미지 리스트
     GameObject[] gArr = new GameObject[RepeatCount];
@@ -43,6 +43,7 @@ public class CardBoard : MonoBehaviour
         CardInit();
         CreateCard(gameArr, gArr, StartPosition_game, Signed(true));
         CreateCard(memberArr, mArr, StartPosition_member, Signed(false));
+        Debug.Log("CardBoard Start");
     }
 
     // Update is called once per frame
@@ -63,10 +64,13 @@ public class CardBoard : MonoBehaviour
         gameArr[1] = game1;
         gameArr[2] = game2;
         gameArr[3] = game3;
+        gameArr[4] = game4;
+
         memberArr[0] = member0;
         memberArr[1] = member1;
         memberArr[2] = member2;
         memberArr[3] = member3;
+        memberArr[4] = member4;
     }
 
     // 카드 생성 함수
