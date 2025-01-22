@@ -33,18 +33,6 @@ public class Card : MonoBehaviour
         frontImage.sprite = Resources.Load<Sprite>($"Images/GameCard/card{idx}");
     }
 
-    public void OpenSceneSetting(int num, string path)
-    {
-        if (frontImage == null)
-        {
-            Debug.LogError("FrontImageê°€ Scene???†ìŠµ?ˆë‹¤!");
-        }
-
-        string file_path = $"{path}{num}";
-        Debug.Log(file_path);
-        frontImage.sprite = Resources.Load<Sprite>(file_path);
-    }
-
     public void OpenCard()  
     {
         if (!GameManager.Instance.isCanOpen) return;
