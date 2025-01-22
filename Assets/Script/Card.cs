@@ -54,7 +54,7 @@ public class Card : MonoBehaviour
             else
                 GameManager.Instance.secondTry = null;
         }
-        audioSource.PlayOneShot(clip);
+        audioSource.PlayOneShot(clip, 0.5f);
 
 
         anim.SetBool("isOpen", true);

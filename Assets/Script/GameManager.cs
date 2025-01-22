@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public AudioManager audioManager;
     public AudioSource audioSource;
     public AudioClip matchClip;
+    public AudioClip failClip;
+    public AudioClip successClip;
 
     public Card firstTry;
     public Card secondTry;
@@ -96,7 +98,18 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0f;
             Result.SetActive(true);
-            FailMsg.SetActive(true);
+
+            if (cardCount > 0)
+            {  
+                audioSource.PlayOneShot(failClip, 0.03f);
+                FailMsg.SetActive(true);
+            }
+            else
+            {
+                audioSource.PlayOneShot(successClip, 0.03f);
+                CrealMSg.SetActive(true);
+            }
+            
             if (level >= saveLevel)
             {
                 GameLvSave();
@@ -113,6 +126,7 @@ public class GameManager : MonoBehaviour
             firstTry.DestroyCard();
             secondTry.DestroyCard();
             cardCount -= 2;
+
             if (cardCount == 0)
             {
                 Time.timeScale = 0.0f;

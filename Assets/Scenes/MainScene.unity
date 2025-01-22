@@ -156,6 +156,8 @@ MonoBehaviour:
   audioManager: {fileID: 848469656}
   audioSource: {fileID: 97638720}
   matchClip: {fileID: 8300000, guid: 4d83a167f74a547bfad59dd2fa219b0f, type: 3}
+  failClip: {fileID: 8300000, guid: e27c9bd212be3413780f5b52fd2384e0, type: 3}
+  successClip: {fileID: 8300000, guid: 1063570da1a0a4fc59034f41821e8eb3, type: 3}
   firstTry: {fileID: 0}
   secondTry: {fileID: 0}
   timeTxt: {fileID: 1894322580}
