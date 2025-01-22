@@ -154,14 +154,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioManager: {fileID: 848469656}
-  audioSource: {fileID: 0}
-  clip: {fileID: 8300000, guid: 4d83a167f74a547bfad59dd2fa219b0f, type: 3}
-  tenseClip: {fileID: 8300000, guid: 1d65ebfa5856a492389c397b351e525a, type: 3}
+  audioSource: {fileID: 97638720}
+  matchClip: {fileID: 8300000, guid: 4d83a167f74a547bfad59dd2fa219b0f, type: 3}
+  failClip: {fileID: 8300000, guid: e27c9bd212be3413780f5b52fd2384e0, type: 3}
+  successClip: {fileID: 8300000, guid: 1063570da1a0a4fc59034f41821e8eb3, type: 3}
   firstTry: {fileID: 0}
   secondTry: {fileID: 0}
   timeTxt: {fileID: 1894322580}
   CurrentTimeTxt: {fileID: 391103021}
   BestTimeTxt: {fileID: 757903538}
+  timeAnim: {fileID: 1894322582}
   endTxt: {fileID: 0}
   Result: {fileID: 1402936463}
   FailMsg: {fileID: 1938469384}
@@ -169,6 +171,7 @@ MonoBehaviour:
   cardCount: 0
   isCanOpen: 0
   level: 0
+  toplevel: 0
   hiddenLevel: 4
 --- !u!4 &97638719
 Transform:
@@ -933,9 +936,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1506,71 +1509,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 995624199}
   m_CullTransparentMesh: 1
---- !u!1001 &1073061773
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1236190094370705605, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 380
-      objectReference: {fileID: 0}
-    - target: {fileID: 1236190094370705605, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 640
-      objectReference: {fileID: 0}
-    - target: {fileID: 1236190094370705605, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1236190094370705605, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1236190094370705605, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1236190094370705605, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1236190094370705605, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1236190094370705605, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1236190094370705605, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1236190094370705605, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1404431952321587321, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
-      propertyPath: m_Name
-      value: LoadingBG
-      objectReference: {fileID: 0}
-    - target: {fileID: 6935468738158639312, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
-      propertyPath: m_Name
-      value: LevelLoader
-      objectReference: {fileID: 0}
-    - target: {fileID: 6935468738158639312, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
 --- !u!1 &1402936463
 GameObject:
   m_ObjectHideFlags: 0
@@ -2003,6 +1941,7 @@ GameObject:
   - component: {fileID: 1894322579}
   - component: {fileID: 1894322581}
   - component: {fileID: 1894322580}
+  - component: {fileID: 1894322582}
   m_Layer: 5
   m_Name: TimeTxt
   m_TagString: Untagged
@@ -2073,6 +2012,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894322578}
   m_CullTransparentMesh: 1
+--- !u!95 &1894322582
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894322578}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5f493413e92d08b45b0b596ab258559a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1938469384
 GameObject:
   m_ObjectHideFlags: 0
@@ -2156,7 +2116,6 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1073061773}
   - {fileID: 940704364}
   - {fileID: 422347849}
   - {fileID: 848469654}

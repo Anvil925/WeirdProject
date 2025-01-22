@@ -523,6 +523,8 @@ MonoBehaviour:
   StartPosition_member: {x: 3, y: 1.2}
   upVec: {x: 4, y: 2, z: 0}
   Speed: 0.5
+  Opacity: 0.8
+  CardRotation: 0
   game0: {fileID: 3938498266516538985, guid: 107d6b32d0f0b31469f8021d1db176ae, type: 3}
   game1: {fileID: 680303830363726461, guid: d12c78677f302b948a380bee1469e3e4, type: 3}
   game2: {fileID: 3459294523670373012, guid: dd12d44339fc1c044be893ad162253f0, type: 3}
@@ -1222,7 +1224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1403571441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1470,7 +1472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1626543899
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1669,7 +1671,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.072
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2087,7 +2089,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB9CC\uB4E0\uC0AC\uB78C\uB4E4"
+  m_Text: "\uB9CC\uB4E0 \uC0AC\uB78C\uB4E4"
 --- !u!222 &1917587347
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2299,6 +2301,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8372454852759319008, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8372454852759319008, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8421554
+      objectReference: {fileID: 0}
+    - target: {fileID: 8372454852759319008, guid: 0df7e1e096f374c72930a3f5124c2f6a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5235849
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2311,8 +2325,8 @@ SceneRoots:
   - {fileID: 2850168145457677277}
   - {fileID: 520813122}
   - {fileID: 1718505808}
-  - {fileID: 1248076779}
   - {fileID: 1403571444}
+  - {fileID: 1248076779}
   - {fileID: 1709983971}
   - {fileID: 589579518}
   - {fileID: 247277312}
