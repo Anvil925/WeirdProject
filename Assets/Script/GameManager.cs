@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     float time = 0.0f;
     float endtime = 0f;
 
-    public int level;
+    public int level = 1;
     public int hiddenLevel = 4;
 
     int toplevel;
