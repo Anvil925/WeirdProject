@@ -38,19 +38,28 @@ public class Card : MonoBehaviour
         if (!GameManager.Instance.isCanOpen) return;
 
         if (GameManager.Instance.firstTry == null)
+        {
             GameManager.Instance.firstTry = this;
-        else
+            Debug.Log(GameManager.Instance.firstTry.name.ToString());
+        }
+        else 
         {
             GameManager.Instance.secondTry = this;
-            GameManager.Instance.isCanOpen = false;
-            GameManager.Instance.Matched();
+            if(GameManager.Instance.firstTry != GameManager.Instance.secondTry)
+            {
+                Debug.Log(GameManager.Instance.secondTry.name.ToString());
+                GameManager.Instance.isCanOpen = false;
+                GameManager.Instance.Matched();
+            }
+            else
+                GameManager.Instance.secondTry = null;
         }
         audioSource.PlayOneShot(clip);
 
 
         anim.SetBool("isOpen", true);
-        front.SetActive(true);
-        back.SetActive(false);
+        //front.SetActive(true);
+        //back.SetActive(false);
     }
 
     public void DestroyCard()
@@ -70,8 +79,8 @@ public class Card : MonoBehaviour
     void CloseCardInvoke()
     {
         anim.SetBool("isOpen", false);
-        front.SetActive(false);
-        back.SetActive(true);
+        //front.SetActive(false);
+        //back.SetActive(true);
         GameManager.Instance.isCanOpen = true;
 
     }
