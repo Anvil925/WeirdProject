@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     {
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N1");
-        
+
         if (time <= endtime)
         {
             Time.timeScale = 0f;
