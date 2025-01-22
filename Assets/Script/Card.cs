@@ -15,8 +15,10 @@ public class Card : MonoBehaviour
 
     public SpriteRenderer frontImage;
 
+    public bool Debug_Mode = false;
     public int idx = 0;
     public float LevelValue = 1;
+    
     
     void Start()
     {
@@ -25,7 +27,9 @@ public class Card : MonoBehaviour
 
     void Update()
     {
-        
+        if (Debug_Mode)
+            anim.SetTrigger("isOpen");
+
     }
 
     public void Setting(int num)

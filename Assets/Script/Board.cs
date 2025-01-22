@@ -6,10 +6,12 @@ using System.Linq;
 public class Board : MonoBehaviour
 {
     public GameObject card;
+    public bool Debug_Mode = false;
     public int Level = 1;
 
     void Start()
     {
+        // Level 1일때
         int[] arr = { 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4 };
 
         if (Level == 2)
@@ -33,6 +35,7 @@ public class Board : MonoBehaviour
             callCard.transform.position = new Vector2(x, y);
             callCard.GetComponent<Card>().Setting(arr[i]);
             callCard.GetComponent<Card>().LevelValue = Level;
+            callCard.GetComponent<Card>().Debug_Mode = Debug_Mode;
         }
         GameManager.Instance.cardCount = arr.Length;
     }
