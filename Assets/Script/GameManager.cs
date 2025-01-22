@@ -18,11 +18,13 @@ public class GameManager : MonoBehaviour
 
     public GameObject endTxt;
 
-    public int cardCount = 0;
+    public int cardCount;
     public bool isCanOpen = false;
-    public int level;
+    public int level = 1 ;
     public int hiddenLevel = 4;
 
+
+    int toplevel;
     int saveLevel;
 
     float time;
@@ -36,9 +38,24 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+
         audioSource = GetComponent<AudioSource>();
-        saveLevel = PlayerPrefs.GetInt("LoadLv");
-        level = saveLevel;
+
+        //Load set
+        string lv2 = PlayerPrefs.GetString("Loadlv2");
+        string lv3 = PlayerPrefs.GetString("Loadlv3");
+
+        if (lv2 == "2")
+        {
+
+            level = 2;
+            saveLevel = PlayerPrefs.GetInt("LoadLv");
+        }
+        else if (lv3 == "3")
+        {
+            level = 3;
+            saveLevel = PlayerPrefs.GetInt("LoadLv");
+        }
 
         if (level == 1)
         {
@@ -70,9 +87,12 @@ public class GameManager : MonoBehaviour
         if (time <= endtime)
         {
             Time.timeScale = 0f;
-            if (level >= saveLevel)
+            if (level >= toplevel)
             {
-                GameLvSave();
+                if (toplevel >= saveLevel)
+                {
+                    GameLvSave();
+                }
             }
         }
     }
@@ -90,9 +110,12 @@ public class GameManager : MonoBehaviour
             {
                 Time.timeScale = 0.0f;
                 level += 1;
-                if (level >= saveLevel)
+                if (level >= toplevel)
                 {
-                    GameLvSave();
+                    if (toplevel >= saveLevel)
+                    {
+                        GameLvSave();
+                    }
                 }
             }
         }
@@ -107,8 +130,7 @@ public class GameManager : MonoBehaviour
 
     public void GameLvSave()
     {
-        PlayerPrefs.SetInt("GameLv", level);
+        PlayerPrefs.SetInt("GameLv", toplevel);
         PlayerPrefs.Save();
     }
-
 }
