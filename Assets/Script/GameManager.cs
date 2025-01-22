@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public AudioManager audioManager;
     public AudioSource audioSource;
     public AudioClip matchClip;
+    public AudioClip failClip;
+    public AudioClip successClip;
 
     public Card firstTry;
     public Card secondTry;
@@ -19,6 +21,8 @@ public class GameManager : MonoBehaviour
     public Text CurrentTimeTxt;
     public Text BestTimeTxt;
 
+
+    public Animator timeAnim;
 
     public GameObject endTxt;
     public GameObject Result;
@@ -32,10 +36,12 @@ public class GameManager : MonoBehaviour
     private bool pitchChanged = false;
 
     float time = 0.0f;
+    float timeLimit = 0.0f;
     float endtime = 0f;
     
 
     public int level;
+    public int toplevel;
     public int hiddenLevel = 4;
 
     int saveLevel;
@@ -45,7 +51,6 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null) Instance = this;
     }
-
 
     void Start()
     {
@@ -59,23 +64,21 @@ public class GameManager : MonoBehaviour
         startTime = Time.time;
         if (level == 1)
         {
-            time = 300.0f;
+            timeLimit = 300.0f;
         }
         else if (level == 2)
         {
-            time = 180.0f;
-
+            timeLimit = 180.0f;
         }
         else if (level == 3)
         {
-            time = 60.0f;
-
+            timeLimit = 60.0f;
         }
         else
         {
-            time = 30.0f;
-
+            timeLimit = 30.0f;
         }
+        time = timeLimit;
         Time.timeScale = 1.0f;
     }
 
@@ -84,9 +87,34 @@ public class GameManager : MonoBehaviour
         time -= Time.deltaTime;
         time = Mathf.Max(time, 0.0f);
         timeTxt.text = time.ToString("N1");
+
+        //�������� �ð��� 1/3 ���� �ð� �ȳ��������ε� �����ϼŵ� �˴ϴ�.
+        if ((timeLimit / 3) >= time)
+        {
+            timeAnim.SetBool("isTimeLimit", true);
+            if (time <= endtime)
+            {
+                Time.timeScale = 0f;
+                if (level >= saveLevel)
+                {
+                    if (time <= endtime)
+                    {
+                        Time.timeScale = 0f;
+                        if (level >= toplevel)
+                        {
+                            if (toplevel >= saveLevel)
+                            {
+                                toplevel = saveLevel;
+                                //GameLvSave();
+                            }
+                        }
+                    }
+                }
+            }
+        }
         
         //브금 속도 조정
-        if (time <= 10.0f && !pitchChanged)
+        if (time <= (timeLimit / 3) && !pitchChanged)
         {
             StartCoroutine(GraduallyIncreasePitch(1.5f, 3.0f));
             pitchChanged = true;
@@ -96,7 +124,18 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0f;
             Result.SetActive(true);
-            FailMsg.SetActive(true);
+
+            if (cardCount > 0)
+            {  
+                audioSource.PlayOneShot(failClip, 0.03f);
+                FailMsg.SetActive(true);
+            }
+            else
+            {
+                audioSource.PlayOneShot(successClip, 0.03f);
+                CrealMSg.SetActive(true);
+            }
+            
             if (level >= saveLevel)
             {
                 GameLvSave();
@@ -106,13 +145,15 @@ public class GameManager : MonoBehaviour
 
     public void Matched()
     {
-        if (firstTry.idx == secondTry.idx)
+        if (firstTry.idx == secondTry.idx) // �� ī�尡 ������ ���� 
+
         {
             audioSource.PlayOneShot(matchClip);
             
             firstTry.DestroyCard();
             secondTry.DestroyCard();
             cardCount -= 2;
+
             if (cardCount == 0)
             {
                 Time.timeScale = 0.0f;
@@ -143,11 +184,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            firstTry.CloseCard();
-            secondTry.CloseCard();
+            firstTry.anim.SetTrigger("isClose");
+            secondTry.anim.SetTrigger("isClose");
         }
-        firstTry = null;
-        secondTry = null;
     }
 
     public void GameLvSave()
