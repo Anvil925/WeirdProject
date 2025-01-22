@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public GameObject endTxt;
 
     public int cardCount = 0;
+
     public bool isCanOpen = true;
     float time = 0.0f;
     float endtime = 0f;
@@ -39,7 +40,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+
         audioSource = GetComponent<AudioSource>();
+
         isCanOpen = true;
 
         //Load set
@@ -139,8 +142,7 @@ public class GameManager : MonoBehaviour
 
     public void GameLvSave()
     {
-        PlayerPrefs.SetInt("GameLv", level);
+        PlayerPrefs.SetInt("GameLv", toplevel);
         PlayerPrefs.Save();
     }
-
 }
