@@ -36,30 +36,28 @@ public class Card : MonoBehaviour
     public void OpenCard()  
     {
         if (!GameManager.Instance.isCanOpen) return;
-
         if (GameManager.Instance.firstTry == null)
         {
             GameManager.Instance.firstTry = this;
-            Debug.Log(GameManager.Instance.firstTry.name.ToString());
+            anim.SetTrigger("isOpen");
+            audioSource.PlayOneShot(clip);
         }
         else 
         {
-            GameManager.Instance.secondTry = this;
-            if(GameManager.Instance.firstTry != GameManager.Instance.secondTry)
+            GameManager.Instance.secondTry = this; 
+            if (GameManager.Instance.firstTry.name == GameManager.Instance.secondTry.name)
             {
-                Debug.Log(GameManager.Instance.secondTry.name.ToString());
-                GameManager.Instance.isCanOpen = false;
-                GameManager.Instance.Matched();
-            }
-            else
                 GameManager.Instance.secondTry = null;
+                return;
+            }
+            anim.SetTrigger("isOpen");
+            Invoke("Match", 0.6f); // 실수값 변수로 만들어서 수정하면 카드 공개 후 빨리 돌아가서 난이도 올릴 수 있음.
+            GameManager.Instance.isCanOpen = false;
+            audioSource.PlayOneShot(clip);
         }
         audioSource.PlayOneShot(clip, 0.5f);
 
 
-        anim.SetBool("isOpen", true);
-        //front.SetActive(true);
-        //back.SetActive(false);
     }
 
     public void DestroyCard()
@@ -74,14 +72,17 @@ public class Card : MonoBehaviour
     }
     public void CloseCard()
     {
-        Invoke("CloseCardInvoke", 1.0f);
+        CloseCardInvoke();
     }
     void CloseCardInvoke()
     {
-        anim.SetBool("isOpen", false);
-        //front.SetActive(false);
-        //back.SetActive(true);
+        GameManager.Instance.firstTry = null;
+        GameManager.Instance.secondTry = null;
         GameManager.Instance.isCanOpen = true;
+    }
 
+    void Match()
+    {
+        GameManager.Instance.Matched();
     }
 }
