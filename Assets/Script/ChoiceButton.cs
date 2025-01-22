@@ -2,44 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class ChoiceButton : MonoBehaviour
 {
-    public int toplevel;
-    public GameManager gameManager;
 
-    public void Awake()
+    public int saveLevel;
+
+    public void Start()
     {
-        toplevel = PlayerPrefs.GetInt("PlayerLv");
+        saveLevel = PlayerPrefs.GetInt("GameLv");
 
     }
 
-
     public void Choice2Lv()
-        //2lv
-        //메인신에서 레벨 2 으로 변경하기
+    //2lv
     {
-        if(toplevel >= 2)
-        {
-            SceneManager.LoadScene("MainScene");
-            
-        }
+        saveLevel = 2;
+        PlayerPrefs.SetInt("LoadLv", saveLevel);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("MainScene");
     }
     public void Choice3Lv()
     //3lv
-    //메인신에서 레벨 3 으로 변경하기
     {
-        if (toplevel == 3)
-        {
-            SceneManager.LoadScene("MainScene");
-            
-        }
+        saveLevel = 3;
+        PlayerPrefs.SetInt("LoadLv", saveLevel);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("MainScene");
     }
-
-    public void BackOpenS()
+    public void BackScene()
     {
         SceneManager.LoadScene("OpenScene");
-        
     }
 }
