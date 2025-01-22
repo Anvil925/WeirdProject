@@ -159,6 +159,9 @@ MonoBehaviour:
   secondTry: {fileID: 0}
   timeTxt: {fileID: 1894322580}
   endTxt: {fileID: 0}
+  Result: {fileID: 1402936463}
+  FailMsg: {fileID: 1938469384}
+  CrealMSg: {fileID: 954888772}
   cardCount: 0
   isCanOpen: 0
   level: 0
@@ -1145,7 +1148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &954888773
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1662,14 +1665,14 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &1484894699
 GameObject:
@@ -2150,8 +2153,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1073061773}
-  - {fileID: 422347849}
   - {fileID: 940704364}
+  - {fileID: 422347849}
   - {fileID: 848469654}
   - {fileID: 373866227}
   - {fileID: 97638719}
