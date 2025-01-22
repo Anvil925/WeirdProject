@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     public int level;
     public int hiddenLevel = 4;
 
+    int toplevel;
     int saveLevel;
 
 
@@ -38,10 +40,25 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        saveLevel = PlayerPrefs.GetInt("LoadLv");
-        level = saveLevel;
         isCanOpen = true;
 
+        //Load set
+        string lv2 = PlayerPrefs.GetString("Loadlv2");
+        string lv3 = PlayerPrefs.GetString("Loadlv3");
+
+        if (lv2 == "2")
+        {
+
+            level = 2;
+            saveLevel = PlayerPrefs.GetInt("LoadLv");
+        }
+        else if (lv3 == "3")
+        {
+            level = 3;
+            saveLevel = PlayerPrefs.GetInt("LoadLv");
+        }
+
+        //level set
         if (level == 1)
         {
             time = 300.0f;
@@ -62,6 +79,8 @@ public class GameManager : MonoBehaviour
 
         }
         Time.timeScale = 1.0f;
+
+
     }
 
     void Update()
@@ -69,22 +88,24 @@ public class GameManager : MonoBehaviour
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N1");
 
-        if (time <= endtime)
+        if (level >= toplevel)
         {
-            Time.timeScale = 0f;
-            if (level >= saveLevel)
+            if (toplevel >= saveLevel)
             {
+                toplevel = saveLevel;
                 GameLvSave();
             }
         }
+
     }
+
 
     public void Matched()
     {
         if (firstTry.idx == secondTry.idx)
         {
             audioSource.PlayOneShot(clip);
-            
+
             firstTry.DestroyCard();
             secondTry.DestroyCard();
             cardCount -= 2;
@@ -92,9 +113,13 @@ public class GameManager : MonoBehaviour
             {
                 Time.timeScale = 0.0f;
                 level += 1;
-                if (level >= saveLevel)
+                if (level >= toplevel)
                 {
-                    GameLvSave();
+                    if (toplevel >= saveLevel)
+                    {
+                        toplevel = saveLevel;
+                        GameLvSave();
+                    }
                 }
             }
         }
@@ -103,8 +128,8 @@ public class GameManager : MonoBehaviour
             firstTry.CloseCard();
             secondTry.CloseCard();
         }
-        firstTry = null;
-        secondTry = null;
+            firstTry = null;
+            secondTry = null;
     }
 
     public void GameLvSave()
