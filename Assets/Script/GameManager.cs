@@ -30,9 +30,9 @@ public class GameManager : MonoBehaviour
     public GameObject CrealMSg;
     public int cardCount = 0;
     public bool isCanOpen = true;
-    private float startTime;  // 게임 시작 시간
-    private float elapsedTime; // 흘러간 시간
-    private float bestTime;   // 최고 기록
+    private float startTime;  
+    private float elapsedTime; 
+    private float bestTime;   
     private bool pitchChanged = false;
 
     float time = 0.0f;
@@ -40,9 +40,9 @@ public class GameManager : MonoBehaviour
     float endtime = 0f;
     
 
-    public int level;
-    public int toplevel;
-    public int hiddenLevel = 4;
+    int level = 1;
+    int toplevel;
+    int hiddenLevel = 4;
 
     int saveLevel;
 
@@ -55,12 +55,23 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //audioSource = GetComponent<AudioSource>();
-        saveLevel = PlayerPrefs.GetInt("LoadLv");
-        level = saveLevel;
         isCanOpen = true;
 
-        bestTime = PlayerPrefs.GetFloat("BestTime", float.MaxValue); // 최고 기록 로드
-        // 게임 시작 시간 초기화
+        string lv2 = PlayerPrefs.GetString("Loadlv2");
+        string lv3 = PlayerPrefs.GetString("Loadlv3");
+        bestTime = PlayerPrefs.GetFloat("BestTime", float.MaxValue);
+
+        if (lv2 == "2")
+        {
+            level = 2;
+            saveLevel = PlayerPrefs.GetInt("LoadLv");
+        }
+        else if (lv3 == "3")
+        {
+            level = 3;
+            saveLevel = PlayerPrefs.GetInt("LoadLv");
+        }
+
         startTime = Time.time;
         if (level == 1)
         {
@@ -88,32 +99,27 @@ public class GameManager : MonoBehaviour
         time = Mathf.Max(time, 0.0f);
         timeTxt.text = time.ToString("N1");
 
-        //�������� �ð��� 1/3 ���� �ð� �ȳ��������ε� �����ϼŵ� �˴ϴ�.
+        
         if ((timeLimit / 3) >= time)
         {
             timeAnim.SetBool("isTimeLimit", true);
             if (time <= endtime)
             {
                 Time.timeScale = 0f;
-                if (level >= saveLevel)
+                if (level >= toplevel)
                 {
-                    if (time <= endtime)
+                    if (saveLevel <= toplevel)
                     {
-                        Time.timeScale = 0f;
-                        if (level >= toplevel)
-                        {
-                            if (toplevel >= saveLevel)
-                            {
-                                toplevel = saveLevel;
-                                //GameLvSave();
-                            }
-                        }
+                        saveLevel = toplevel;
+                        GameLvSave();
                     }
                 }
+                  
+                
             }
         }
         
-        //브금 속도 조정
+        
         if (time <= (timeLimit / 3) && !pitchChanged)
         {
             StartCoroutine(GraduallyIncreasePitch(1.5f, 3.0f));
@@ -124,7 +130,6 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0f;
             Result.SetActive(true);
-            Time.timeScale = 1;
             if (cardCount > 0)
             {  
                 audioSource.PlayOneShot(failClip, 0.03f);
@@ -136,16 +141,20 @@ public class GameManager : MonoBehaviour
                 CrealMSg.SetActive(true);
             }
             
-            if (level >= saveLevel)
+            if (level <= toplevel)
             {
-                GameLvSave();
+                if (saveLevel <= toplevel)
+                {
+                    saveLevel = toplevel;
+                    GameLvSave();
+                }
             }
         }
     }
 
     public void Matched()
     {
-        if (firstTry.idx == secondTry.idx) // �� ī�尡 ������ ���� 
+        if (firstTry.idx == secondTry.idx)  
 
         {
             audioSource.PlayOneShot(matchClip);
@@ -159,20 +168,18 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0.0f;
                 level += 1;
 
-                // 흘러간 시간 계산
                 elapsedTime = Time.time - startTime;
 
-                // 최고 기록 갱신
+
                 if (elapsedTime < bestTime)
                 {
                 bestTime = elapsedTime;
-                PlayerPrefs.SetFloat("BestTime", bestTime); // 최고 기록 저장
+                PlayerPrefs.SetFloat("BestTime", bestTime);
                 PlayerPrefs.Save();
                 }
 
-                // UI 업데이트
-                CurrentTimeTxt.text = $"{elapsedTime:F1}초";
-                BestTimeTxt.text = $"{bestTime:F1}초";
+                CurrentTimeTxt.text = $"{elapsedTime:F1}��";
+                BestTimeTxt.text = $"{bestTime:F1}��";
                 Result.SetActive(true);
                 CrealMSg.SetActive(true);
                 Time.timeScale = 1;
@@ -191,11 +198,10 @@ public class GameManager : MonoBehaviour
 
     public void GameLvSave()
     {
-        PlayerPrefs.SetInt("GameLv", level);
+        PlayerPrefs.SetInt("GameLv", toplevel);
         PlayerPrefs.Save();
     }
 
-    //브금 빠르게 하기 용
     IEnumerator GraduallyIncreasePitch(float targetPitch, float duration)
     {
         float startPitch = audioManager.audioSource.pitch;
