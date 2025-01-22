@@ -40,7 +40,7 @@ public class Card : MonoBehaviour
         {
             GameManager.Instance.firstTry = this;
             anim.SetTrigger("isOpen");
-            audioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(clip, 0.3f);
         }
         else 
         {
@@ -51,13 +51,10 @@ public class Card : MonoBehaviour
                 return;
             }
             anim.SetTrigger("isOpen");
-            Invoke("Match", 0.6f); // ½Ç¼ö°ª º¯¼ö·Î ¸¸µé¾î¼­ ¼öÁ¤ÇÏ¸é Ä«µå °ø°³ ÈÄ »¡¸® µ¹¾Æ°¡¼­ ³­ÀÌµµ ¿Ã¸± ¼ö ÀÖÀ½.
+            Invoke("Match", 0.6f); // ï¿½Ç¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½î¼­ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Ã¸ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
             GameManager.Instance.isCanOpen = false;
-            audioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(clip, 0.3f);
         }
-        audioSource.PlayOneShot(clip, 0.5f);
-
-
     }
 
     public void DestroyCard()
