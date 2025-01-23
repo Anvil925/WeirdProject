@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
             {
                 audioSource.PlayOneShot(successClip, 0.05f);
                 Invoke("TimeStop", 2f);
-                Time.timeScale = 0.0f;
+                //Time.timeScale = 0.0f;
                 level += 1;
 
                 Scene scene = GetCurrentScene();
@@ -223,7 +223,8 @@ public class GameManager : MonoBehaviour
                 audioSource.ignoreListenerPause = true;
                 audioSource.PlayOneShot(successClip, 0.7f);
                 Result.SetActive(true);
-                nextLv.SetActive(true);
+                if(nextLv != null)
+                    nextLv.SetActive(true);
                 Invoke("TimeStop", 2f);
 
                 Time.timeScale = 0;

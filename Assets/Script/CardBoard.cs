@@ -14,7 +14,7 @@ public class CardBoard : MonoBehaviour
     public float Opacity = 1f;
     public float CardRotation = 0f;
 
-    // 카드 생성 반복 횟수
+    // 카드 ?�성 반복 ?�수
     public static int RepeatCount = 20;
 
     public GameObject game0;
@@ -29,11 +29,11 @@ public class CardBoard : MonoBehaviour
     public GameObject member3;
     public GameObject member4;
 
-    // 각각 카드 초기화 리스트
+    // 각각 카드 초기??리스??
     GameObject[] gameArr = new GameObject[5];
     GameObject[] memberArr = new GameObject[5];
 
-    // 각각 생성된 이미지 리스트
+    // 각각 ?�성???��?지 리스??
     GameObject[] gArr = new GameObject[RepeatCount];
     GameObject[] mArr = new GameObject[RepeatCount];
 
@@ -57,10 +57,10 @@ public class CardBoard : MonoBehaviour
         RepositionCard(gArr, StartPosition_game, Signed(true));
         RepositionCard(mArr, StartPosition_member, Signed(false));
 
-        Debug.Log(Time.timeScale);
+        //Debug.Log(Time.timeScale);
     }
 
-    // 카드 입력
+    // 카드 ?�력
     private void CardInit()
     {
         gameArr[0] = game0;
@@ -76,7 +76,7 @@ public class CardBoard : MonoBehaviour
         memberArr[4] = member4;
     }
 
-    // 카드 생성 함수
+    // 카드 ?�성 ?�수
     private void CreateCard(GameObject[] inArr, GameObject[] outArr, Vector2 startPos, float signed)
     {
         upVec.Normalize();
@@ -85,24 +85,24 @@ public class CardBoard : MonoBehaviour
             int idx = i % inArr.Length;
             GameObject go = Instantiate(inArr[idx], this.transform);
 
-            // 카드 위치 지정
+            // 카드 ?�치 지??
             float x = signed * i * CardDistance * upVec.x + startPos.x;
             float y = signed * i * CardDistance * upVec.y + startPos.y;
 
-            // 카드 transform 설정
+            // 카드 transform ?�정
             Vector3 cardPosition = new Vector3(x, y, 0);
             go.transform.position = cardPosition;
             go.transform.rotation = Quaternion.Euler(0, 0, CardRotation);
 
-            // 투명도 설정
+            // ?�명???�정
             SetOpacity(go, Opacity);
 
-            // update를 위해 반환
+            // update�??�해 반환
             outArr[i] = go;
         }
     }
 
-    // 카드 움직이는 함수
+    // 카드 ?�직이???�수
     private void MoveCard(GameObject[] inArr, float signed)
     {
         for (int i = 0; i < inArr.Length; i++)
@@ -112,14 +112,14 @@ public class CardBoard : MonoBehaviour
         }
     }
 
-    // 숫자 부호를 bool 값으로 입력 받아, float값으로 출력
-    // true: 양수, false: 음수
+    // ?�자 부?��? bool 값으�??�력 받아, float값으�?출력
+    // true: ?�수, false: ?�수
     float Signed(bool b)
     {
         return b ? 1f : -1f;
     }
 
-    // 투명도 설정
+    // ?�명???�정
     void SetOpacity(GameObject go, float opacity)
     {
         SpriteRenderer spriteRender = go.GetComponent<SpriteRenderer>();
@@ -128,7 +128,7 @@ public class CardBoard : MonoBehaviour
         spriteRender.color = color;
     }
 
-    // 위치 재조정
+    // ?�치 ?�조??
     void RepositionCard(GameObject[] inArr, Vector2 startPos, float signed)
     {
         for (int i = 0; i < RepeatCount; i++)
@@ -139,7 +139,7 @@ public class CardBoard : MonoBehaviour
 
             Vector3 position = inArr[i].transform.position;
 
-            // 게임 카드의 재조정 조건             || 팀원 카드의 재조정 조건
+            // 게임 카드???�조??조건             || ?�??카드???�조??조건
             if ((position.x < -3.5f && signed > 0) || (position.x > 3.5f && signed < 0))
             {
                 float x = signed * CardDistance * upVec.x + inArr[num].transform.position.x;
