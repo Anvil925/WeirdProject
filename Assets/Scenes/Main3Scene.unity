@@ -246,10 +246,10 @@ MonoBehaviour:
   endTxt: {fileID: 0}
   Result: {fileID: 933233780}
   retry: {fileID: 1769500643}
-  nextLv: {fileID: 1275518536}
+  nextLv: {fileID: 0}
   FailMsg: {fileID: 1039040859}
   CrealMSg: {fileID: 1732812997}
-  Achievements: {fileID: 0}
+  Achievements: {fileID: 251045260}
   cardCount: 0
   isCanOpen: 0
 --- !u!4 &97638719
