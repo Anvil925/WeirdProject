@@ -160,14 +160,14 @@ MonoBehaviour:
   successClip: {fileID: 8300000, guid: 1063570da1a0a4fc59034f41821e8eb3, type: 3}
   firstTry: {fileID: 0}
   secondTry: {fileID: 0}
-  timeTxt: {fileID: 0}
-  CurrentTimeTxt: {fileID: 0}
-  BestTimeTxt: {fileID: 0}
-  timeAnim: {fileID: 0}
+  timeTxt: {fileID: 1600470673}
+  CurrentTimeTxt: {fileID: 1145343537}
+  BestTimeTxt: {fileID: 634064474}
+  timeAnim: {fileID: 1600470672}
   endTxt: {fileID: 0}
-  Result: {fileID: 0}
-  FailMsg: {fileID: 0}
-  CrealMSg: {fileID: 0}
+  Result: {fileID: 1068563105}
+  FailMsg: {fileID: 582400848}
+  CrealMSg: {fileID: 1468134016}
   Achievements: {fileID: 0}
   cardCount: 0
   isCanOpen: 0

@@ -239,14 +239,14 @@ MonoBehaviour:
   successClip: {fileID: 8300000, guid: 1063570da1a0a4fc59034f41821e8eb3, type: 3}
   firstTry: {fileID: 0}
   secondTry: {fileID: 0}
-  timeTxt: {fileID: 0}
-  CurrentTimeTxt: {fileID: 0}
-  BestTimeTxt: {fileID: 0}
-  timeAnim: {fileID: 0}
+  timeTxt: {fileID: 736406018}
+  CurrentTimeTxt: {fileID: 1011090334}
+  BestTimeTxt: {fileID: 37294307}
+  timeAnim: {fileID: 736406017}
   endTxt: {fileID: 0}
-  Result: {fileID: 0}
-  FailMsg: {fileID: 0}
-  CrealMSg: {fileID: 0}
+  Result: {fileID: 933233780}
+  FailMsg: {fileID: 1039040859}
+  CrealMSg: {fileID: 1732812997}
   Achievements: {fileID: 0}
   cardCount: 0
   isCanOpen: 0
