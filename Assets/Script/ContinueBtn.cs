@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ContinueBtn : MonoBehaviour
 {
-    // ?�어?�기 버튼
+    // 이어하기 버튼
     public void Btn_Continue()
     {
         Debug.Log("ContinueBtn");
