@@ -361,7 +361,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-
 --- !u!1 &251045260
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +394,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 940704364}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2268,3 +2267,4 @@ SceneRoots:
   - {fileID: 373866227}
   - {fileID: 97638719}
   - {fileID: 519420032}
+  - {fileID: 251045261}
