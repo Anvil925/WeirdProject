@@ -56,12 +56,11 @@ public class GameManager : MonoBehaviour
         if (Instance == null) 
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject);
-
+            //Destroy(gameObject);
         }
     }
 
@@ -115,12 +114,12 @@ public class GameManager : MonoBehaviour
             time -= Time.deltaTime;
         time = Mathf.Max(time, 0.0f);
         timeTxt.text = time.ToString("N1");
-                
+
         {
             time = Mathf.Max(time - Time.deltaTime, 0.0f);
             timeTxt.text = time.ToString("N1");
         }
-        
+
         if ((timeLimit / 3) >= time)
         {
             timeAnim.SetBool("isTimeLimit", true);
@@ -134,19 +133,19 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        
+
         if (time <= (timeLimit / 3) && !pitchChanged)
         {
             StartCoroutine(GraduallyIncreasePitch(1.5f, 3.0f));
             pitchChanged = true;
         }
-        
+
         if (time <= endtime)
         {
             Time.timeScale = 0f;
             Result.SetActive(true);
             if (cardCount > 0)
-            {  
+            {
                 audioSource.PlayOneShot(failClip, 0.02f);
                 FailMsg.SetActive(true);
             }
