@@ -7,6 +7,12 @@ public class RetryButton : MonoBehaviour
 {
     public void Retry()
     {
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("Main1Scene");
+    }
+
+    public void HiddeRetry()
+    {
+        SceneManager.LoadScene("HiddenScene");
     }
 }

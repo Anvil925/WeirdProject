@@ -4,6 +4,9 @@ using UnityEditor.Experimental.GraphView;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Linq;
+using static UnityEngine.GraphicsBuffer;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,20 +25,21 @@ public class GameManager : MonoBehaviour
     public Text CurrentTimeTxt;
     public Text BestTimeTxt;
 
-
     public Animator timeAnim;
 
     public GameObject endTxt;
     public GameObject Result;
     public GameObject FailMsg;
     public GameObject CrealMSg;
+    public GameObject Achievements;
+    public SceneManager sceneManager;
     public int cardCount = 0;
     public bool isCanOpen = true;
+
     private float startTime;  
     private float elapsedTime; 
     private float bestTime;   
     private bool pitchChanged = false;
-    
 
     float time = 0.0f;
     float timeLimit = 0.0f;
@@ -47,13 +51,21 @@ public class GameManager : MonoBehaviour
 
     int saveLevel;
 
-
     private void Awake()
-    {
-        if (Instance == null) Instance = this;
+    {   
+        if (Instance == null) 
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+
+        }
     }
 
-    void Start()
+        void Start()
     {
         //audioSource = GetComponent<AudioSource>();
         isCanOpen = true;
@@ -62,16 +74,13 @@ public class GameManager : MonoBehaviour
         string lv3 = PlayerPrefs.GetString("Loadlv3");
         string Lvh = PlayerPrefs.GetString("Loadlvh");
         bestTime = PlayerPrefs.GetFloat("BestTime", float.MaxValue);
-
         if (lv2 == "2")
         {
             level = 2;
-            saveLevel = PlayerPrefs.GetInt("LoadLv");
         }
         else if (lv3 == "3")
         {
-            level = 3;
-            saveLevel = PlayerPrefs.GetInt("LoadLv");
+            level = 3;           
         }
         else if (Lvh == "h")
         {
@@ -81,7 +90,7 @@ public class GameManager : MonoBehaviour
         startTime = Time.time;   
         if (hiddenLv == 1)
         {
-            timeLimit = 30.0f;
+            timeLimit = 210.0f;
         }
         else if (level == 1)
         {
@@ -106,7 +115,11 @@ public class GameManager : MonoBehaviour
             time -= Time.deltaTime;
         time = Mathf.Max(time, 0.0f);
         timeTxt.text = time.ToString("N1");
-
+                
+        {
+            time = Mathf.Max(time - Time.deltaTime, 0.0f);
+            timeTxt.text = time.ToString("N1");
+        }
         
         if ((timeLimit / 3) >= time)
         {
@@ -114,19 +127,13 @@ public class GameManager : MonoBehaviour
             if (time <= endtime)
             {
                 Time.timeScale = 0f;
-                if (level >= toplevel)
+                if (level >= toplevel && saveLevel <= toplevel)
                 {
-                    if (saveLevel <= toplevel)
-                    {
-                        saveLevel = toplevel;
-                        GameLvSave();
-                    }
+                    saveLevel = toplevel;
+                    GameLvSave();
                 }
-                  
-                
             }
         }
-        
         
         if (time <= (timeLimit / 3) && !pitchChanged)
         {
@@ -140,7 +147,7 @@ public class GameManager : MonoBehaviour
             Result.SetActive(true);
             if (cardCount > 0)
             {  
-                audioSource.PlayOneShot(failClip, 0.05f);
+                audioSource.PlayOneShot(failClip, 0.02f);
                 FailMsg.SetActive(true);
             }
 
@@ -162,7 +169,6 @@ public class GameManager : MonoBehaviour
     public void Matched()
     {
         if (firstTry.idx == secondTry.idx)  
-
         {
             audioSource.PlayOneShot(matchClip);
             
@@ -173,29 +179,51 @@ public class GameManager : MonoBehaviour
             if (cardCount == 0)
             {
                 audioSource.PlayOneShot(successClip, 0.05f);
+                Invoke("TimeStop", 2f);
                 Time.timeScale = 0.0f;
                 level += 1;
-                
+
+                Scene scene = GetCurrentScene();
+                if (scene.name == "Main1Scene")
+                {
+                    PlayerPrefs.SetString("Main1Scene", scene.name);
+                    PlayerPrefs.SetString("ContinueBtn", "ContinueBtn");
+                }
+                else if (scene.name == "Main2Scene")
+                {
+                    PlayerPrefs.SetString("Main2Scene", scene.name);
+                    Debug.Log("main2Clear");
+                    Debug.Log(PlayerPrefs.HasKey("Main2Scene"));
+                }
+                else if (scene.name == "Main3Scene")
+                {
+                    Achievements.SetActive(true);
+                    Animator achAnim = Achievements.GetComponent<Animator>();
+                    achAnim.SetTrigger("isActivate");
+                    audioSource.PlayOneShot(matchClip);
+                }
+
                 elapsedTime = Time.time - startTime;
 
                 if (level > 3)
                 {
                     level = 3;
                 }
-
-
                 if (elapsedTime < bestTime)
                 {
-                bestTime = elapsedTime;
-                PlayerPrefs.SetFloat("BestTime", bestTime);
-                PlayerPrefs.Save();
+                    bestTime = elapsedTime;
+                    PlayerPrefs.SetFloat("BestTime", bestTime);
+                    PlayerPrefs.Save();
                 }
-
                 CrealMSg.SetActive(true);
-                CurrentTimeTxt.text = $"{elapsedTime:F1}��";
-                BestTimeTxt.text = $"{bestTime:F1}��";
+                CurrentTimeTxt.text = $"{elapsedTime:F1}";
+                BestTimeTxt.text = $"{bestTime:F1}";
+                audioSource.ignoreListenerPause = true;
+                audioSource.PlayOneShot(successClip, 0.7f);
                 Result.SetActive(true);
-                Time.timeScale = 1;
+                Invoke("TimeStop", 2f);
+                Time.timeScale = 0;
+                
                 if (level <= toplevel)
                 {
                     if (saveLevel <= toplevel)
@@ -217,12 +245,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void TimeStop()
+    {
+        Time.timeScale = 0.0f;
+    }
+
+    private static void LoadChoiceScene()
+    {
+        SceneManager.LoadScene("ChoiceScene");
+    }
+
     public void GameLvSave()
     {
         PlayerPrefs.SetInt("GameLv", toplevel);
         PlayerPrefs.Save();
     }
-
     IEnumerator GraduallyIncreasePitch(float targetPitch, float duration)
     {
         float startPitch = audioManager.audioSource.pitch;
@@ -235,7 +272,6 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
-
     public void UpdateCardBackImages()
     {   
         Card[] cards = FindObjectsOfType<Card>();
@@ -243,6 +279,10 @@ public class GameManager : MonoBehaviour
         {
             card.Setting(card.idx);
         }
-}
+    }
 
+    Scene GetCurrentScene()
+    {
+        return SceneManager.GetActiveScene(); 
+    }
 }
