@@ -175,7 +175,6 @@ public class GameManager : MonoBehaviour
 
             if (cardCount == 0)
             {
-                audioSource.PlayOneShot(successClip, 0.05f);
                 Invoke("TimeStop", 2f);
                 Time.timeScale = 0.0f;
                 level += 1;
