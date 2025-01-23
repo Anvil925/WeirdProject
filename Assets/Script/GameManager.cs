@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject endTxt;
     public GameObject Result;
+    public GameObject retry;
+    public GameObject nextLv;
     public GameObject FailMsg;
     public GameObject CrealMSg;
     public GameObject Achievements;
@@ -56,12 +58,9 @@ public class GameManager : MonoBehaviour
         if (Instance == null) 
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject);
+
         }
-        else
-        {
-            //Destroy(gameObject);
-        }
+
     }
 
     void Start()
@@ -146,6 +145,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0f;
             Result.SetActive(true);
+            nextLv.SetActive(true);
             if (cardCount > 0)
             {
                 audioSource.PlayOneShot(failClip, 0.02f);
@@ -223,7 +223,16 @@ public class GameManager : MonoBehaviour
                 audioSource.ignoreListenerPause = true;
                 audioSource.PlayOneShot(successClip, 0.7f);
                 Result.SetActive(true);
+                nextLv.SetActive(true);
                 Invoke("TimeStop", 2f);
+
+                Time.timeScale = 0;
+
+                if (level == 3)
+                {                  
+                    nextLv.SetActive(false);
+                }
+
                 
                 if (level <= toplevel)
                 {

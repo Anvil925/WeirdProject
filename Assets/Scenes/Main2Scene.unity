@@ -166,6 +166,8 @@ MonoBehaviour:
   timeAnim: {fileID: 1600470672}
   endTxt: {fileID: 0}
   Result: {fileID: 1068563105}
+  retry: {fileID: 0}
+  nextLv: {fileID: 0}
   FailMsg: {fileID: 582400848}
   CrealMSg: {fileID: 1468134016}
   Achievements: {fileID: 0}
@@ -1478,7 +1480,7 @@ GameObject:
   - component: {fileID: 1500639352}
   - component: {fileID: 1500639351}
   - component: {fileID: 1500639350}
-  - component: {fileID: 1500639349}
+  - component: {fileID: 1500639353}
   m_Layer: 5
   m_Name: NextBtn
   m_TagString: Untagged
@@ -1505,18 +1507,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.037308, y: -121}
   m_SizeDelta: {x: 418.13, y: 121.21}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1500639349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1500639347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b02bdf7c87116d94781c1bfc5820a46c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1500639350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1561,9 +1551,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1500639349}
-        m_TargetAssemblyTypeName: RetryButton, Assembly-CSharp
-        m_MethodName: HiddeRetry
+      - m_Target: {fileID: 1500639353}
+        m_TargetAssemblyTypeName: NextBtn, Assembly-CSharp
+        m_MethodName: Next3Lv
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1611,6 +1601,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500639347}
   m_CullTransparentMesh: 1
+--- !u!114 &1500639353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500639347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2efdf3ab869164642ad2729ee3c2342d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1600470670
 GameObject:
   m_ObjectHideFlags: 0
