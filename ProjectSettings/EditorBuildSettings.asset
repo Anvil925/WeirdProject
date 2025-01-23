@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HiddenScene.unity
     guid: b1c0f2fad47d576479e82e14cbd8ed02
+  - enabled: 1
+    path: Assets/Scenes/ClearScene.unity
+    guid: ce8fc343dfc12b94ea041769e7e24edc
   m_configObjects: {}
