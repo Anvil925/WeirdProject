@@ -35,11 +35,13 @@ public class GameManager : MonoBehaviour
     public SceneManager sceneManager;
     public int cardCount = 0;
     public bool isCanOpen = true;
-
     private float startTime;  
     private float elapsedTime; 
     private float bestTime;   
     private bool pitchChanged = false;
+
+    private string[] sceneName = new string[3];
+    
 
     float time = 0.0f;
     float timeLimit = 0.0f;
@@ -51,11 +53,9 @@ public class GameManager : MonoBehaviour
 
     int saveLevel;
 
+
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
         if (Instance == null) 
         {
             Instance = this;
@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-        void Start()
+    void Start()
     {
         //audioSource = GetComponent<AudioSource>();
         isCanOpen = true;
@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
         string lv3 = PlayerPrefs.GetString("Loadlv3");
         string Lvh = PlayerPrefs.GetString("Loadlvh");
         bestTime = PlayerPrefs.GetFloat("BestTime", float.MaxValue);
+
         if (lv2 == "2")
         {
             level = 2;
@@ -114,11 +115,8 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (Time.timeScale != 0f)
-            time -= Time.deltaTime;
-        time = Mathf.Max(time, 0.0f);
-        timeTxt.text = time.ToString("N1");
-                
         {
+            time -= Time.deltaTime;
             time = Mathf.Max(time - Time.deltaTime, 0.0f);
             timeTxt.text = time.ToString("N1");
         }
@@ -184,39 +182,38 @@ public class GameManager : MonoBehaviour
                 Invoke("TimeStop", 2f);
                 Time.timeScale = 0.0f;
                 level += 1;
-
-                Scene scene = GetCurrentScene();
+                Scene scene = GetCurrentScene(); 
                 if (scene.name == "Main1Scene")
-                {
-                    PlayerPrefs.SetString("Main1Scene", scene.name);
-                    PlayerPrefs.SetString("ContinueBtn", "ContinueBtn");
-                }
+                    sceneName[0] = scene.name; 
                 else if (scene.name == "Main2Scene")
-                {
-                    PlayerPrefs.SetString("Main2Scene", scene.name);
-                    Debug.Log("main2Clear");
-                    Debug.Log(PlayerPrefs.HasKey("Main2Scene"));
-                }
+                    sceneName[1] = scene.name;
                 else if (scene.name == "Main3Scene")
                 {
+                    sceneName[2] = scene.name;
+
                     Achievements.SetActive(true);
                     Animator achAnim = Achievements.GetComponent<Animator>();
                     achAnim.SetTrigger("isActivate");
                     audioSource.PlayOneShot(matchClip);
                 }
 
+                
                 elapsedTime = Time.time - startTime;
 
                 if (level > 3)
                 {
                     level = 3;
                 }
+
+
+
                 if (elapsedTime < bestTime)
                 {
                     bestTime = elapsedTime;
                     PlayerPrefs.SetFloat("BestTime", bestTime);
                     PlayerPrefs.Save();
                 }
+
                 CrealMSg.SetActive(true);
                 CurrentTimeTxt.text = $"{elapsedTime:F1}";
                 BestTimeTxt.text = $"{bestTime:F1}";
@@ -245,11 +242,6 @@ public class GameManager : MonoBehaviour
             firstTry.anim.SetTrigger("isClose");
             secondTry.anim.SetTrigger("isClose");
         }
-    }
-
-    private void TimeStop()
-    {
-        Time.timeScale = 0.0f;
     }
 
     private static void LoadChoiceScene()
