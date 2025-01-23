@@ -7,14 +7,14 @@ public class CreditBtn : MonoBehaviour
 {
     public GameObject Credit;
 
-    // Credit 진입 버튼.
+    // Credit 진입 버튼
     public void Btn_Credit()
     {
         Debug.Log("CreditBtn");
         Credit.SetActive(true);
     }
 
-    // Credit 탈출 버튼.
+    // Credit ?�출 버튼
     public void Btn_CreditExit()
     {
         Debug.Log("CreditExitBtn");

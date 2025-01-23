@@ -113,7 +113,7 @@ TextureImporter:
       name: backBtn_0
       rect:
         serializedVersion: 2
-        x: 229
+        x: 234
         y: 598
         width: 649
         height: 210
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c5880f203b944a76a5cde3eb3ddf3bb
-      internalID: 788369829
+      spriteID: 5a531bbfa6f4949e3b84af87f7ae8630
+      internalID: -1718542989
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      backBtn_0: 788369829
+      backBtn_0: -1718542989
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

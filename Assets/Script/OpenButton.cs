@@ -10,4 +10,9 @@ public class OpenButton : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("OpenScene");
     }
+
+    public void ClearScene()
+    {
+        SceneManager.LoadScene("ClearScene");
+    }
 }
