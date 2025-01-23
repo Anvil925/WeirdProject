@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     float timeLimit = 0.0f;
     float endtime = 0f;
 
+    int hiddenLv;
     int level = 1;
     int toplevel;
 
@@ -65,7 +66,7 @@ public class GameManager : MonoBehaviour
 
         string lv2 = PlayerPrefs.GetString("Loadlv2");
         string lv3 = PlayerPrefs.GetString("Loadlv3");
-        string hiddenLv = PlayerPrefs.GetString("Loadlvh");
+        string Lvh = PlayerPrefs.GetString("Loadlvh");
         bestTime = PlayerPrefs.GetFloat("BestTime", float.MaxValue);
 
         if (lv2 == "2")
@@ -78,27 +79,28 @@ public class GameManager : MonoBehaviour
             level = 3;
             saveLevel = PlayerPrefs.GetInt("LoadLv");
         }
-        else if (hiddenLv == "h")
+        else if (Lvh == "h")
         {
-            level = 4;
+            hiddenLv = 1;
         }
 
-        startTime = Time.time;
-        if (level == 1)
+        startTime = Time.time;   
+        if (hiddenLv == 1)
         {
-            timeLimit = 300.0f;
+            timeLimit = 30.0f;
         }
-        else if (level == 2)
+        else if (level == 1)
         {
             timeLimit = 180.0f;
         }
+        else if (level == 2 )
+        {
+            timeLimit = 120.0f;
+        }
         else if (level == 3)
         {
-            timeLimit = 60.0f;
-        }
-        else
-        {
             timeLimit = 90.0f;
+
         }
         time = timeLimit;
         Time.timeScale = 1.0f;
@@ -142,16 +144,20 @@ public class GameManager : MonoBehaviour
             Result.SetActive(true);
             if (cardCount > 0)
             {  
-                audioSource.PlayOneShot(failClip, 0.05f);
+                audioSource.PlayOneShot(failClip, 0.02f);
                 FailMsg.SetActive(true);
             }
-            
+
             if (level <= toplevel)
             {
                 if (saveLevel <= toplevel)
                 {
                     saveLevel = toplevel;
                     GameLvSave();
+                }
+                if (saveLevel == 3)
+                {
+                    hiddenLv = 1;
                 }
             }
         }
@@ -187,7 +193,15 @@ public class GameManager : MonoBehaviour
                     audioSource.PlayOneShot(matchClip);
                 }
 
+                
                 elapsedTime = Time.time - startTime;
+
+                if (level > 3)
+                {
+                    level = 3;
+                }
+
+
 
                 if (elapsedTime < bestTime)
                 {
@@ -200,10 +214,18 @@ public class GameManager : MonoBehaviour
                 CurrentTimeTxt.text = $"{elapsedTime:F1}��";
                 BestTimeTxt.text = $"{bestTime:F1}��";
                 Result.SetActive(true);
-                Time.timeScale = 1;
-                if (level >= saveLevel)
+                Time.timeScale = 0;
+                if (level <= toplevel)
                 {
-                    GameLvSave();
+                    if (saveLevel <= toplevel)
+                    {
+                        saveLevel = toplevel;
+                        GameLvSave();
+                    }
+                    if (saveLevel == 3)
+                    {
+                        hiddenLv = 1;
+                    }
                 }
             }
         }

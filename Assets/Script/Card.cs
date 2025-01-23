@@ -59,7 +59,6 @@ public class Card : MonoBehaviour
             }
             anim.SetTrigger("isOpen");
 
-            // ?�이??조절 가?? 카드 ?�집?�는 ?�도
             Invoke("Match", 0.5f / (LevelValue / 2)); 
 
             GameManager.Instance.isCanOpen = false;
