@@ -52,11 +52,7 @@ public class GameManager : MonoBehaviour
     int saveLevel;
 
     private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
+    {   
         if (Instance == null) 
         {
             Instance = this;
@@ -65,6 +61,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+
         }
     }
 
