@@ -59,7 +59,6 @@ public class Card : MonoBehaviour
             }
             anim.SetTrigger("isOpen");
 
-            
             Invoke("Match", 0.5f / (LevelValue / 2)); 
 
             GameManager.Instance.isCanOpen = false;

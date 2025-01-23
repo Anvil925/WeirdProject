@@ -14,7 +14,7 @@ public class CreditBtn : MonoBehaviour
         Credit.SetActive(true);
     }
 
-    // Credit 탈출 버튼
+    // Credit ?�출 버튼
     public void Btn_CreditExit()
     {
         Debug.Log("CreditExitBtn");
