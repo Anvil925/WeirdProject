@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 3508857975764268577}
   - component: {fileID: 1679613059807477064}
   m_Layer: 0
-  m_Name: Card 2
+  m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,9 +156,7 @@ MonoBehaviour:
   back: {fileID: 5243625046241502737}
   anim: {fileID: 3508857975764268577}
   frontImage: {fileID: 1897327421901652896}
-  Debug_Mode: 0
   idx: 0
-  LevelValue: 1
 --- !u!95 &3508857975764268577
 Animator:
   serializedVersion: 5
@@ -304,8 +302,8 @@ RectTransform:
   m_GameObject: {fileID: 3426455099905992216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 11.31, y: 11.31, z: 11.31}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1486693100716151673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -439,8 +437,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.012901574}
-  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1486693100716151673}
   m_Father: {fileID: 7565509868878178097}
@@ -486,7 +484,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 52a484e4069a3a247ab26c43a0d92959, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf40587686e592149ba4126dd739ac3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
