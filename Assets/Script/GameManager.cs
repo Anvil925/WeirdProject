@@ -76,34 +76,40 @@ public class GameManager : MonoBehaviour
         {
             hiddenLv = 1;
         }
-        else if (lv2 == "2")
+        else
         {
-            level = 2;
-            saveLevel = PlayerPrefs.GetInt("LoadLv");
-        }
-        else if (lv3 == "3")
-        {
-            level = 3;
-            saveLevel = PlayerPrefs.GetInt("LoadLv");
+            if (lv2 == "2")
+            {
+                level = 2;
+                saveLevel = PlayerPrefs.GetInt("LoadLv");
+            }
+            else if (lv3 == "3")
+            {
+                level = 3;
+                saveLevel = PlayerPrefs.GetInt("LoadLv");
+            }
         }
 
-        startTime = Time.time;   
+        startTime = Time.time;
         if (hiddenLv == 1)
         {
             timeLimit = 210.0f;
         }
-        else if (level == 1)
+        else
         {
-            timeLimit = 180.0f;
-        }
-        else if (level == 2 )
-        {
-            timeLimit = 120.0f;
-        }
-        else if (level == 3)
-        {
-            timeLimit = 90.0f;
+            if (level == 1)
+            {
+                timeLimit = 180.0f;
+            }
+            else if (level == 2)
+            {
+                timeLimit = 120.0f;
+            }
+            else if (level == 3)
+            {
+                timeLimit = 90.0f;
 
+            }
         }
         time = timeLimit;
         Time.timeScale = 1.0f;
