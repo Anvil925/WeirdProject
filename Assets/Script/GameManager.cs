@@ -89,9 +89,13 @@ public class GameManager : MonoBehaviour
         {
             timeLimit = 60.0f;
         }
-        else
+        else if (level == 4)
         {
             timeLimit = 30.0f;
+        }
+        else
+        {
+            timeLimit = 300.0f;
         }
         time = timeLimit;
         Time.timeScale = 1.0f;
