@@ -59,7 +59,7 @@ public class Card : MonoBehaviour
             }
             anim.SetTrigger("isOpen");
 
-            // 난이도 조절 가능. 카드 뒤집히는 속도
+            // 난이도 조절 가능. 카드 뒤집히는 속도.
             Invoke("Match", 0.5f / (LevelValue / 2)); 
 
             GameManager.Instance.isCanOpen = false;
