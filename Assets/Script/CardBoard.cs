@@ -105,6 +105,7 @@ public class CardBoard : MonoBehaviour
         for (int i = 0; i < inArr.Length; i++)
         {
             inArr[i].transform.position += signed * Speed * upVec * Time.deltaTime;
+            inArr[i].transform.rotation = Quaternion.Euler(0, 0, CardRotation);
         }
     }
 
