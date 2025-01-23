@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
             Result.SetActive(true);
             if (cardCount > 0)
             {  
-                audioSource.PlayOneShot(failClip, 0.05f);
+                audioSource.PlayOneShot(failClip, 0.02f);
                 FailMsg.SetActive(true);
             }
 
