@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main2Scene.unity
     guid: 48a7cdd4b603ec247983d31cd8804b77
+  - enabled: 1
+    path: Assets/Scenes/HiddenScene.unity
+    guid: b1c0f2fad47d576479e82e14cbd8ed02
   m_configObjects: {}

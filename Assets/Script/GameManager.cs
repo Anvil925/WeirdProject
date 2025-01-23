@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
     float time = 0.0f;
     float timeLimit = 0.0f;
     float endtime = 0f;
-    
 
     int level = 1;
     int toplevel;
