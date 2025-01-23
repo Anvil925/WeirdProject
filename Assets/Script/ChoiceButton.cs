@@ -50,5 +50,8 @@ public class ChoiceButton : MonoBehaviour
         SceneManager.LoadScene("OpenScene");
     }
 
-
+    public void HiddenScene()
+    {
+        SceneManager.LoadScene("HiddenScene");
+    }
 }

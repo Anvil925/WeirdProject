@@ -93,7 +93,8 @@ public class GameManager : MonoBehaviour
         }
         else if (level == 3)
         {
-            timeLimit = 60.0f;
+            timeLimit = 90.0f;
+
         }
         time = timeLimit;
         Time.timeScale = 1.0f;
@@ -101,7 +102,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        time -= Time.deltaTime;
+        if (Time.timeScale != 0f)
+            time -= Time.deltaTime;
         time = Mathf.Max(time, 0.0f);
         timeTxt.text = time.ToString("N1");
 
