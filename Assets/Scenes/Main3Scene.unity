@@ -161,13 +161,13 @@ MonoBehaviour:
   firstTry: {fileID: 0}
   secondTry: {fileID: 0}
   timeTxt: {fileID: 1894322580}
-  CurrentTimeTxt: {fileID: 0}
-  BestTimeTxt: {fileID: 0}
+  CurrentTimeTxt: {fileID: 1020333632}
+  BestTimeTxt: {fileID: 1696997671}
   timeAnim: {fileID: 1894322582}
   endTxt: {fileID: 0}
-  Result: {fileID: 0}
-  FailMsg: {fileID: 0}
-  CrealMSg: {fileID: 0}
+  Result: {fileID: 894572644}
+  FailMsg: {fileID: 1740352760}
+  CrealMSg: {fileID: 1118279312}
   Achievements: {fileID: 251045260}
   cardCount: 0
   isCanOpen: 0
