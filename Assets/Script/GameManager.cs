@@ -86,10 +86,6 @@ public class GameManager : MonoBehaviour
             level = 3;
             saveLevel = PlayerPrefs.GetInt("LoadLv");
         }
-        if (Lvh == "h")
-        {
-            hiddenLv = 1;
-        }
 
         startTime = Time.time;   
         if (hiddenLv == 1)
