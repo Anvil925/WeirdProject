@@ -5,13 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class RetryButton : MonoBehaviour
 {
-    public void Retry()
+    public void Main1Scene()
     {
         PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("Main1Scene");
     }
-
-    public void HiddeRetry()
+    public void Main2Scene()
+    {
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("Main2Scene");
+    }
+    public void Main3Scene()
+    {
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("Main3Scene");
+    }
+    public void HiddenRetry()
     {
         SceneManager.LoadScene("HiddenScene");
     }
