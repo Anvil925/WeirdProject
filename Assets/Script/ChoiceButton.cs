@@ -37,7 +37,8 @@ public class ChoiceButton : MonoBehaviour
         }
     }
     public void HiddenLv()
-    {   
+    {
+            PlayerPrefs.DeleteAll();
             PlayerPrefs.SetString("Loadlvh", "h");
             PlayerPrefs.Save();
             SceneManager.LoadScene("HiddenScene");
