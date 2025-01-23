@@ -56,8 +56,6 @@ public class CardBoard : MonoBehaviour
 
         RepositionCard(gArr, StartPosition_game, Signed(true));
         RepositionCard(mArr, StartPosition_member, Signed(false));
-
-        Debug.Log(Time.timeScale);
     }
 
     // 카드 입력

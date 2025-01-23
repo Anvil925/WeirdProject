@@ -166,8 +166,8 @@ MonoBehaviour:
   timeAnim: {fileID: 1894322582}
   endTxt: {fileID: 0}
   Result: {fileID: 1402936463}
-  retry: {fileID: 0}
-  nextLv: {fileID: 0}
+  retry: {fileID: 988548844}
+  nextLv: {fileID: 1926856880}
   FailMsg: {fileID: 1264349480}
   CrealMSg: {fileID: 278860770}
   Achievements: {fileID: 0}
