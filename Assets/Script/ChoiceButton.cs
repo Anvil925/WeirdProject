@@ -28,12 +28,17 @@ public class ChoiceButton : MonoBehaviour
     public void Choice3Lv()
     //3lv
     {
-
             PlayerPrefs.SetString("Loadlv3", "3");
             PlayerPrefs.SetInt("LoadLv", saveLevel);
             PlayerPrefs.Save();
             SceneManager.LoadScene("Main3Scene");
         
+    }
+    public void HiddenLv()
+    {   
+            PlayerPrefs.SetString("Loadlvh", "h");
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("HiddenScene");
     }
     public void BackScene()
     {
