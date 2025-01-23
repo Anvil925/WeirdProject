@@ -56,14 +56,6 @@ public class GameManager : MonoBehaviour
         if (Instance == null) 
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-
-            Destroy(gameObject);
-
-
         }
     }
 
@@ -118,7 +110,6 @@ public class GameManager : MonoBehaviour
         if (Time.timeScale != 0f)
             time -= Time.deltaTime;
         time = Mathf.Max(time, 0.0f);
-        Debug.Log("time");
         timeTxt.text = time.ToString("N1");
     
         
@@ -181,7 +172,7 @@ public class GameManager : MonoBehaviour
             {
                 audioSource.PlayOneShot(successClip, 0.05f);
                 Invoke("TimeStop", 2f);
-                Time.timeScale = 0.0f;
+                //Time.timeScale = 0.0f;
                 level += 1;
 
                 Scene scene = GetCurrentScene();
