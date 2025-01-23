@@ -40,10 +40,16 @@ public class ChoiceButton : MonoBehaviour
             PlayerPrefs.Save();
             SceneManager.LoadScene("HiddenScene");
     }
+
+    public void SaveDel()
+    {
+        PlayerPrefs.DeleteAll();
+    }
     public void BackScene()
     {
         SceneManager.LoadScene("OpenScene");
     }
+
     public void HiddenScene()
     {
         SceneManager.LoadScene("HiddenScene");
