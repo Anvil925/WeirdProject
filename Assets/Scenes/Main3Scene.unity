@@ -170,9 +170,6 @@ MonoBehaviour:
   CrealMSg: {fileID: 278860770}
   cardCount: 0
   isCanOpen: 0
-  level: 0
-  toplevel: 0
-  hiddenLevel: 4
 --- !u!4 &97638719
 Transform:
   m_ObjectHideFlags: 0
@@ -627,7 +624,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d461677e65236ee4485e36a26c13e41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 2501498762286117530, guid: c631aae3cc827b94db75b90749c6a2dd, type: 3}
+  card1: {fileID: 2501498762286117530, guid: 275d2221a8b962143969477eb28334e8, type: 3}
+  card2: {fileID: 2501498762286117530, guid: fe7a88309b760104c9deb7ce299c190a, type: 3}
+  card3: {fileID: 2501498762286117530, guid: c631aae3cc827b94db75b90749c6a2dd, type: 3}
+  Debug_Mode: 0
   Level: 3
 --- !u!1 &519420028
 GameObject:

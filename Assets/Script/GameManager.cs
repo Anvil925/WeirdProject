@@ -174,8 +174,8 @@ public class GameManager : MonoBehaviour
                 }
 
                 CrealMSg.SetActive(true);
-                CurrentTimeTxt.text = $"{elapsedTime:F1}��";
-                BestTimeTxt.text = $"{bestTime:F1}��";
+                CurrentTimeTxt.text = $"{elapsedTime:F1}초";
+                BestTimeTxt.text = $"{bestTime:F1}초";
                 Result.SetActive(true);
                 Time.timeScale = 1;
                 if (level >= saveLevel)
