@@ -11,8 +11,8 @@ public class OpenButton : MonoBehaviour
         SceneManager.LoadScene("OpenScene");
     }
 
-    public void ChoiceScene()
+    public void ClearScene()
     {
-        SceneManager.LoadScene("ChoiceScene");
+        SceneManager.LoadScene("ClearScene");
     }
 }
