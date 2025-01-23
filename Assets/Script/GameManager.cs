@@ -29,8 +29,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject endTxt;
     public GameObject Result;
-    public GameObject nextBtn;
-    public GameObject retryBtn;
     public GameObject FailMsg;
     public GameObject CrealMSg;
     public GameObject Achievements;
@@ -43,7 +41,7 @@ public class GameManager : MonoBehaviour
     private float bestTime;   
     private bool pitchChanged = false;
 
-    float time;
+    float time = 0.0f;
     float timeLimit = 0.0f;
     float endtime = 0f;
 
@@ -54,8 +52,8 @@ public class GameManager : MonoBehaviour
     int saveLevel;
 
     private void Awake()
-    {
-        if (Instance == null)
+    {   
+        if (Instance == null) 
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
@@ -63,6 +61,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+
         }
     }
 
@@ -107,7 +106,6 @@ public class GameManager : MonoBehaviour
 
         }
         time = timeLimit;
-
         Time.timeScale = 1.0f;
     }
 
@@ -128,7 +126,7 @@ public class GameManager : MonoBehaviour
             timeAnim.SetBool("isTimeLimit", true);
             if (time <= endtime)
             {
-                TimeStop();
+                Time.timeScale = 0f;
                 if (level >= toplevel && saveLevel <= toplevel)
                 {
                     saveLevel = toplevel;
@@ -145,9 +143,8 @@ public class GameManager : MonoBehaviour
         
         if (time <= endtime)
         {
-            TimeStop();
+            Time.timeScale = 0f;
             Result.SetActive(true);
-            retryBtn.SetActive(true);
             if (cardCount > 0)
             {  
                 audioSource.PlayOneShot(failClip, 0.02f);
@@ -183,7 +180,7 @@ public class GameManager : MonoBehaviour
             {
                 audioSource.PlayOneShot(successClip, 0.05f);
                 Invoke("TimeStop", 2f);
-                
+                Time.timeScale = 0.0f;
                 level += 1;
 
                 Scene scene = GetCurrentScene();
@@ -218,7 +215,6 @@ public class GameManager : MonoBehaviour
                     PlayerPrefs.SetFloat("BestTime", bestTime);
                     PlayerPrefs.Save();
                 }
-                nextBtn.SetActive(true);
                 CrealMSg.SetActive(true);
                 CurrentTimeTxt.text = $"{elapsedTime:F1}";
                 BestTimeTxt.text = $"{bestTime:F1}";
@@ -226,7 +222,7 @@ public class GameManager : MonoBehaviour
                 audioSource.PlayOneShot(successClip, 0.7f);
                 Result.SetActive(true);
                 Invoke("TimeStop", 2f);
-               
+                Time.timeScale = 0;
                 
                 if (level <= toplevel)
                 {
