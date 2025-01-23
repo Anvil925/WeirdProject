@@ -170,9 +170,6 @@ MonoBehaviour:
   CrealMSg: {fileID: 278860770}
   cardCount: 0
   isCanOpen: 0
-  level: 0
-  toplevel: 0
-  hiddenLevel: 4
 --- !u!4 &97638719
 Transform:
   m_ObjectHideFlags: 0
