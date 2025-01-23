@@ -40,6 +40,7 @@ public class CardBoard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         CardInit();
         CreateCard(gameArr, gArr, StartPosition_game, Signed(true));
         CreateCard(memberArr, mArr, StartPosition_member, Signed(false));
@@ -55,6 +56,8 @@ public class CardBoard : MonoBehaviour
 
         RepositionCard(gArr, StartPosition_game, Signed(true));
         RepositionCard(mArr, StartPosition_member, Signed(false));
+
+        Debug.Log(Time.timeScale);
     }
 
     // 카드 입력
