@@ -193,15 +193,12 @@ public class GameManager : MonoBehaviour
                     audioSource.PlayOneShot(matchClip);
                 }
 
-                
-                elapsedTime = Time.time - startTime;
-
                 if (level > 3)
                 {
                     level = 3;
                 }
 
-
+                elapsedTime = Time.time - startTime;
 
                 if (elapsedTime < bestTime)
                 {
