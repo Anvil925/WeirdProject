@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
 
         string lv2 = PlayerPrefs.GetString("Loadlv2");
         string lv3 = PlayerPrefs.GetString("Loadlv3");
+        string hiddenLv = PlayerPrefs.GetString("Loadlvh");
         bestTime = PlayerPrefs.GetFloat("BestTime", float.MaxValue);
 
         if (lv2 == "2")
@@ -69,6 +70,10 @@ public class GameManager : MonoBehaviour
         {
             level = 3;
             saveLevel = PlayerPrefs.GetInt("LoadLv");
+        }
+        else if (hiddenLv == "h")
+        {
+            level = 4;
         }
 
         startTime = Time.time;
