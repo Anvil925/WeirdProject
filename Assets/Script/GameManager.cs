@@ -76,7 +76,6 @@ public class GameManager : MonoBehaviour
         string lv3 = PlayerPrefs.GetString("Loadlv3");
         string Lvh = PlayerPrefs.GetString("Loadlvh");
         bestTime = PlayerPrefs.GetFloat("BestTime", float.MaxValue);
-
         if (lv2 == "2")
         {
             level = 2;
