@@ -195,7 +195,7 @@ public class GameManager : MonoBehaviour
                 CurrentTimeTxt.text = $"{elapsedTime:F1}��";
                 BestTimeTxt.text = $"{bestTime:F1}��";
                 Result.SetActive(true);
-                Time.timeScale = 1;
+                Time.timeScale = 0;
                 if (level <= toplevel)
                 {
                     if (saveLevel <= toplevel)
