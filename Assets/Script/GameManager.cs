@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject endTxt;
     public GameObject Result;
+    public GameObject nextBtn;
+    public GameObject retryBtn;
     public GameObject FailMsg;
     public GameObject CrealMSg;
     public GameObject Achievements;
@@ -41,7 +43,7 @@ public class GameManager : MonoBehaviour
     private float bestTime;   
     private bool pitchChanged = false;
 
-    float time = 0.0f;
+    float time;
     float timeLimit = 0.0f;
     float endtime = 0f;
 
@@ -56,15 +58,11 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -109,6 +107,7 @@ public class GameManager : MonoBehaviour
 
         }
         time = timeLimit;
+
         Time.timeScale = 1.0f;
     }
 
@@ -148,6 +147,7 @@ public class GameManager : MonoBehaviour
         {
             TimeStop();
             Result.SetActive(true);
+            retryBtn.SetActive(true);
             if (cardCount > 0)
             {  
                 audioSource.PlayOneShot(failClip, 0.02f);
@@ -218,6 +218,7 @@ public class GameManager : MonoBehaviour
                     PlayerPrefs.SetFloat("BestTime", bestTime);
                     PlayerPrefs.Save();
                 }
+                nextBtn.SetActive(true);
                 CrealMSg.SetActive(true);
                 CurrentTimeTxt.text = $"{elapsedTime:F1}";
                 BestTimeTxt.text = $"{bestTime:F1}";
