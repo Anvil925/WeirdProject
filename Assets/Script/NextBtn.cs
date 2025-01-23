@@ -14,6 +14,7 @@ public class NextBtn : MonoBehaviour
     }
     public void Next2Lv()
     {
+            PlayerPrefs.DeleteKey("Loadlv2");
             PlayerPrefs.SetString("Loadlv2", "2");
             PlayerPrefs.Save();
             SceneManager.LoadScene("Main2Scene");
@@ -21,6 +22,7 @@ public class NextBtn : MonoBehaviour
 
     public void Next3Lv()
     {
+            PlayerPrefs.DeleteKey("Loadlv3");
             PlayerPrefs.SetString("Loadlv3", "3");
             PlayerPrefs.Save();
             SceneManager.LoadScene("Main3Scene");
