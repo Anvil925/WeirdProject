@@ -166,6 +166,8 @@ MonoBehaviour:
   timeAnim: {fileID: 1894322582}
   endTxt: {fileID: 0}
   Result: {fileID: 1402936463}
+  retry: {fileID: 0}
+  nextLv: {fileID: 0}
   FailMsg: {fileID: 1264349480}
   CrealMSg: {fileID: 278860770}
   Achievements: {fileID: 0}
@@ -1153,7 +1155,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &988548845
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1964,7 +1966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1926856881
 RectTransform:
   m_ObjectHideFlags: 0
