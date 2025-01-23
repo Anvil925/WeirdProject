@@ -11,6 +11,7 @@ public class Board : MonoBehaviour
 
     void Start()
     {
+        // Level 1일때
         int[] arr = { 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4 };
 
         if (Level == 2)
