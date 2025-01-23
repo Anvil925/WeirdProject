@@ -4,6 +4,9 @@ using UnityEditor.Experimental.GraphView;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Linq;
+using static UnityEngine.GraphicsBuffer;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,19 +25,22 @@ public class GameManager : MonoBehaviour
     public Text CurrentTimeTxt;
     public Text BestTimeTxt;
 
-
     public Animator timeAnim;
 
     public GameObject endTxt;
     public GameObject Result;
     public GameObject FailMsg;
     public GameObject CrealMSg;
+    public GameObject Achievements;
+    public SceneManager sceneManager;
     public int cardCount = 0;
     public bool isCanOpen = true;
     private float startTime;  
     private float elapsedTime; 
     private float bestTime;   
     private bool pitchChanged = false;
+
+    private string[] sceneName = new string[3];
     
 
     float time = 0.0f;
@@ -105,6 +111,7 @@ public class GameManager : MonoBehaviour
         time = Mathf.Max(time, 0.0f);
         timeTxt.text = time.ToString("N1");
 
+
         
         if ((timeLimit / 3) >= time)
         {
@@ -120,11 +127,8 @@ public class GameManager : MonoBehaviour
                         GameLvSave();
                     }
                 }
-                  
-                
             }
         }
-        
         
         if (time <= (timeLimit / 3) && !pitchChanged)
         {
@@ -156,7 +160,6 @@ public class GameManager : MonoBehaviour
     public void Matched()
     {
         if (firstTry.idx == secondTry.idx)  
-
         {
             audioSource.PlayOneShot(matchClip);
             
@@ -169,9 +172,22 @@ public class GameManager : MonoBehaviour
                 audioSource.PlayOneShot(successClip, 0.05f);
                 Time.timeScale = 0.0f;
                 level += 1;
+                Scene scene = GetCurrentScene(); 
+                if (scene.name == "Main1Scene")
+                    sceneName[0] = scene.name; 
+                else if (scene.name == "Main2Scene")
+                    sceneName[1] = scene.name;
+                else if (scene.name == "Main3Scene")
+                {
+                    sceneName[2] = scene.name;
+
+                    Achievements.SetActive(true);
+                    Animator achAnim = Achievements.GetComponent<Animator>();
+                    achAnim.SetTrigger("isActivate");
+                    audioSource.PlayOneShot(matchClip);
+                }
 
                 elapsedTime = Time.time - startTime;
-
 
                 if (elapsedTime < bestTime)
                 {
@@ -198,12 +214,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private static void LoadChoiceScene()
+    {
+        SceneManager.LoadScene("ChoiceScene");
+    }
+
     public void GameLvSave()
     {
         PlayerPrefs.SetInt("GameLv", toplevel);
         PlayerPrefs.Save();
     }
-
     IEnumerator GraduallyIncreasePitch(float targetPitch, float duration)
     {
         float startPitch = audioManager.audioSource.pitch;
@@ -216,7 +236,6 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
-
     public void UpdateCardBackImages()
     {   
         Card[] cards = FindObjectsOfType<Card>();
@@ -224,6 +243,10 @@ public class GameManager : MonoBehaviour
         {
             card.Setting(card.idx);
         }
-}
+    }
 
+    Scene GetCurrentScene()
+    {
+        return SceneManager.GetActiveScene(); 
+    }
 }
