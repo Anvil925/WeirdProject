@@ -72,7 +72,11 @@ public class GameManager : MonoBehaviour
         string lv3 = PlayerPrefs.GetString("Loadlv3");
         string Lvh = PlayerPrefs.GetString("Loadlvh");
         bestTime = PlayerPrefs.GetFloat("BestTime", float.MaxValue);
-        if (lv2 == "2")
+        if (Lvh == "h")
+        {
+            hiddenLv = 1;
+        }
+        else if (lv2 == "2")
         {
             level = 2;
             saveLevel = PlayerPrefs.GetInt("LoadLv");
@@ -82,7 +86,7 @@ public class GameManager : MonoBehaviour
             level = 3;
             saveLevel = PlayerPrefs.GetInt("LoadLv");
         }
-        else if (Lvh == "h")
+        if (Lvh == "h")
         {
             hiddenLv = 1;
         }
