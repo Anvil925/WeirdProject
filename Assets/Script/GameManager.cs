@@ -112,13 +112,13 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (Time.timeScale != 0f)
-            time -= Time.deltaTime;
-        time = Mathf.Max(time, 0.0f);
-        timeTxt.text = time.ToString("N1");
-                
         {
             time = Mathf.Max(time - Time.deltaTime, 0.0f);
-            timeTxt.text = time.ToString("N1");
+
+            if (timeTxt != null)
+            {
+                timeTxt.text = time.ToString("N1");
+            }
         }
         
         if ((timeLimit / 3) >= time)
