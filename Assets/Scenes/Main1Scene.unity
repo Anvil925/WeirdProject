@@ -168,6 +168,7 @@ MonoBehaviour:
   Result: {fileID: 1402936463}
   FailMsg: {fileID: 1264349480}
   CrealMSg: {fileID: 278860770}
+  Achievements: {fileID: 0}
   cardCount: 0
   isCanOpen: 0
 --- !u!4 &97638719
