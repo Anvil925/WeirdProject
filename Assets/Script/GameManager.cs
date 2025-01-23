@@ -56,14 +56,15 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-        if (Instance == null) 
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -128,7 +129,7 @@ public class GameManager : MonoBehaviour
             timeAnim.SetBool("isTimeLimit", true);
             if (time <= endtime)
             {
-                Time.timeScale = 0f;
+                TimeStop();
                 if (level >= toplevel && saveLevel <= toplevel)
                 {
                     saveLevel = toplevel;
@@ -145,7 +146,7 @@ public class GameManager : MonoBehaviour
         
         if (time <= endtime)
         {
-            Time.timeScale = 0f;
+            TimeStop();
             Result.SetActive(true);
             if (cardCount > 0)
             {  
@@ -182,7 +183,7 @@ public class GameManager : MonoBehaviour
             {
                 audioSource.PlayOneShot(successClip, 0.05f);
                 Invoke("TimeStop", 2f);
-                Time.timeScale = 0.0f;
+                
                 level += 1;
 
                 Scene scene = GetCurrentScene();
@@ -224,7 +225,7 @@ public class GameManager : MonoBehaviour
                 audioSource.PlayOneShot(successClip, 0.7f);
                 Result.SetActive(true);
                 Invoke("TimeStop", 2f);
-                Time.timeScale = 0;
+               
                 
                 if (level <= toplevel)
                 {
