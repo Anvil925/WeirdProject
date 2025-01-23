@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-        void Start()
+    void Start()
     {
         //audioSource = GetComponent<AudioSource>();
         isCanOpen = true;
@@ -75,10 +75,12 @@ public class GameManager : MonoBehaviour
         if (lv2 == "2")
         {
             level = 2;
+            saveLevel = PlayerPrefs.GetInt("LoadLv");
         }
         else if (lv3 == "3")
         {
-            level = 3;           
+            level = 3;
+            saveLevel = PlayerPrefs.GetInt("LoadLv");
         }
         else if (Lvh == "h")
         {
@@ -113,12 +115,12 @@ public class GameManager : MonoBehaviour
             time -= Time.deltaTime;
         time = Mathf.Max(time, 0.0f);
         timeTxt.text = time.ToString("N1");
-                
+
         {
             time = Mathf.Max(time - Time.deltaTime, 0.0f);
             timeTxt.text = time.ToString("N1");
         }
-        
+
         if ((timeLimit / 3) >= time)
         {
             timeAnim.SetBool("isTimeLimit", true);
@@ -132,20 +134,20 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        
+
         if (time <= (timeLimit / 3) && !pitchChanged)
         {
             StartCoroutine(GraduallyIncreasePitch(1.5f, 3.0f));
             pitchChanged = true;
         }
-        
+
         if (time <= endtime)
         {
             Time.timeScale = 0f;
             Result.SetActive(true);
             nextLv.SetActive(true);
             if (cardCount > 0)
-            {  
+            {
                 audioSource.PlayOneShot(failClip, 0.02f);
                 FailMsg.SetActive(true);
             }
@@ -217,17 +219,20 @@ public class GameManager : MonoBehaviour
                 CrealMSg.SetActive(true);
                 CurrentTimeTxt.text = $"{elapsedTime:F1}";
                 BestTimeTxt.text = $"{bestTime:F1}";
+
                 audioSource.ignoreListenerPause = true;
                 audioSource.PlayOneShot(successClip, 0.7f);
                 Result.SetActive(true);
                 nextLv.SetActive(true);
                 Invoke("TimeStop", 2f);
+
                 Time.timeScale = 0;
 
                 if (level == 3)
                 {                  
                     nextLv.SetActive(false);
                 }
+
                 
                 if (level <= toplevel)
                 {
