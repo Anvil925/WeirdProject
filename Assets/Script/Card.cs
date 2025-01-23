@@ -14,6 +14,7 @@ public class Card : MonoBehaviour
     public Animator anim;
 
     public SpriteRenderer frontImage;
+    public SpriteRenderer backImage;
 
     public bool Debug_Mode = false;
     public int idx = 0;
@@ -36,6 +37,7 @@ public class Card : MonoBehaviour
     {
         idx = num;
         frontImage.sprite = Resources.Load<Sprite>($"Images/GameCard/card{idx}");
+        backImage.sprite = Resources.Load<Sprite>($"Images/GameCardBack/level{(int)LevelValue}");
     }
 
     public void OpenCard()  

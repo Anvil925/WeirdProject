@@ -1103,6 +1103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card: {fileID: 2501498762286117530, guid: c631aae3cc827b94db75b90749c6a2dd, type: 3}
+  Debug_Mode: 0
+  Level: 1
 --- !u!4 &690041036
 Transform:
   m_ObjectHideFlags: 0

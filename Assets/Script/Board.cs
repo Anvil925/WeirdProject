@@ -31,8 +31,11 @@ public class Board : MonoBehaviour
             callCard.name = i.ToString();
             float x = (i % 4) * 1.4f - 2.1f;
             float y = (i / 4) * 1.4f - 4.0f;
-
             callCard.transform.position = new Vector2(x, y);
+
+            Card cardScript = callCard.GetComponent<Card>();
+            cardScript.LevelValue = Level;
+            
             callCard.GetComponent<Card>().Setting(arr[i]);
             callCard.GetComponent<Card>().LevelValue = Level;
             callCard.GetComponent<Card>().Debug_Mode = Debug_Mode;
