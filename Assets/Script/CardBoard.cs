@@ -142,7 +142,7 @@ public class CardBoard : MonoBehaviour
                 float x = signed * CardDistance * upVec.x + inArr[num].transform.position.x;
                 float y = signed * CardDistance * upVec.y + inArr[num].transform.position.y;
                 Vector3 newPos = new Vector3(x, y, 0);
-                //Debug.Log($"\nnewPos : {newPos}\nupVec : {upVec}");
+                ////Debug.Log($"\nnewPos : {newPos}\nupVec : {upVec}");
                 inArr[i].transform.position = newPos;
             }
         }
