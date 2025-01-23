@@ -203,8 +203,8 @@ public class GameManager : MonoBehaviour
                 }
 
                 CrealMSg.SetActive(true);
-                CurrentTimeTxt.text = $"{elapsedTime:F1}√ ";
-                BestTimeTxt.text = $"{bestTime:F1}√ ";
+                CurrentTimeTxt.text = $"{elapsedTime:F1}";
+                BestTimeTxt.text = $"{bestTime:F1}";
                 audioSource.ignoreListenerPause = true;
                 audioSource.PlayOneShot(successClip, 0.7f);
                 Result.SetActive(true);
