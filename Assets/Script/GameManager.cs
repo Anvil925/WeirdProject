@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     private float elapsedTime; 
     private float bestTime;   
     private bool pitchChanged = false;
+    
 
     float time = 0.0f;
     float timeLimit = 0.0f;
@@ -218,4 +220,14 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
+
+    public void UpdateCardBackImages()
+    {   
+        Card[] cards = FindObjectsOfType<Card>();
+        foreach (Card card in cards)
+        {
+            card.Setting(card.idx);
+        }
+}
+
 }
