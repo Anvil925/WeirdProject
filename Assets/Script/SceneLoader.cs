@@ -1,13 +1,13 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI; // 버튼 컴포?�트�??�용?�기 ?�해 ?�요
+using UnityEngine.UI; // 버튼 컴포넌트를 사용하기 위해 필요
 
 public class SceneLoader : MonoBehaviour
 {
     public Animator transition;
     public float transitionTime = 1f;
-    // 버튼 ?�결
+    // 버튼 연결
     public Button loadSceneButton;
     public void LoadNextLevel()
     {
