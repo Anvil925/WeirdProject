@@ -56,6 +56,14 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+        if (Instance == null) 
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -72,12 +80,10 @@ public class GameManager : MonoBehaviour
         if (lv2 == "2")
         {
             level = 2;
-            saveLevel = PlayerPrefs.GetInt("LoadLv");
         }
         else if (lv3 == "3")
         {
-            level = 3;
-            saveLevel = PlayerPrefs.GetInt("LoadLv");
+            level = 3;           
         }
         else if (Lvh == "h")
         {
@@ -87,7 +93,7 @@ public class GameManager : MonoBehaviour
         startTime = Time.time;   
         if (hiddenLv == 1)
         {
-            timeLimit = 30.0f;
+            timeLimit = 210.0f;
         }
         else if (level == 1)
         {
@@ -113,19 +119,21 @@ public class GameManager : MonoBehaviour
         time = Mathf.Max(time, 0.0f);
         timeTxt.text = time.ToString("N1");
                 
+        {
+            time = Mathf.Max(time - Time.deltaTime, 0.0f);
+            timeTxt.text = time.ToString("N1");
+        }
+        
         if ((timeLimit / 3) >= time)
         {
             timeAnim.SetBool("isTimeLimit", true);
             if (time <= endtime)
             {
                 Time.timeScale = 0f;
-                if (level >= toplevel)
+                if (level >= toplevel && saveLevel <= toplevel)
                 {
-                    if (saveLevel <= toplevel)
-                    {
-                        saveLevel = toplevel;
-                        GameLvSave();
-                    }
+                    saveLevel = toplevel;
+                    GameLvSave();
                 }
             }
         }
@@ -175,6 +183,7 @@ public class GameManager : MonoBehaviour
             {
                 audioSource.PlayOneShot(successClip, 0.05f);
                 Invoke("TimeStop", 2f);
+                Time.timeScale = 0.0f;
                 level += 1;
 
                 Scene scene = GetCurrentScene();
@@ -210,10 +219,14 @@ public class GameManager : MonoBehaviour
                     PlayerPrefs.Save();
                 }
                 CrealMSg.SetActive(true);
-                CurrentTimeTxt.text = $"{elapsedTime:F1}��";
-                BestTimeTxt.text = $"{bestTime:F1}��";
+                CurrentTimeTxt.text = $"{elapsedTime:F1}";
+                BestTimeTxt.text = $"{bestTime:F1}";
+                audioSource.ignoreListenerPause = true;
+                audioSource.PlayOneShot(successClip, 0.7f);
                 Result.SetActive(true);
                 Invoke("TimeStop", 2f);
+                Time.timeScale = 0;
+                
                 if (level <= toplevel)
                 {
                     if (saveLevel <= toplevel)

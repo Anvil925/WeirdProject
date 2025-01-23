@@ -1057,6 +1057,7 @@ MonoBehaviour:
   Result: {fileID: 1227031542}
   FailMsg: {fileID: 1292333682}
   CrealMSg: {fileID: 522541621}
+  Achievements: {fileID: 0}
   cardCount: 0
   isCanOpen: 0
 --- !u!4 &579372109
@@ -1442,7 +1443,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1077506268}
         m_TargetAssemblyTypeName: RetryButton, Assembly-CSharp
-        m_MethodName: Retry
+        m_MethodName: HiddeRetry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
