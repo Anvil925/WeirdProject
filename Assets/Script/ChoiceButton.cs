@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ChoiceButton : MonoBehaviour
 {
@@ -44,6 +45,7 @@ public class ChoiceButton : MonoBehaviour
     public void SaveDel()
     {
         PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("OpenScene");
     }
     public void BackScene()
     {
@@ -54,4 +56,6 @@ public class ChoiceButton : MonoBehaviour
     {
         SceneManager.LoadScene("HiddenScene");
     }
+
+
 }
