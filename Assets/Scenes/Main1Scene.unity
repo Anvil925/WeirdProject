@@ -168,11 +168,9 @@ MonoBehaviour:
   Result: {fileID: 1402936463}
   FailMsg: {fileID: 1264349480}
   CrealMSg: {fileID: 278860770}
+  Achievements: {fileID: 0}
   cardCount: 0
   isCanOpen: 0
-  level: 0
-  toplevel: 0
-  hiddenLevel: 4
 --- !u!4 &97638719
 Transform:
   m_ObjectHideFlags: 0
@@ -628,6 +626,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card: {fileID: 2501498762286117530, guid: c631aae3cc827b94db75b90749c6a2dd, type: 3}
+  Debug_Mode: 0
+  Level: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

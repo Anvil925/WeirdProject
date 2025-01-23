@@ -14,8 +14,12 @@ public class Card : MonoBehaviour
     public Animator anim;
 
     public SpriteRenderer frontImage;
+    public SpriteRenderer backImage;
 
+    public bool Debug_Mode = false;
     public int idx = 0;
+    public float LevelValue = 1;
+    
     
     void Start()
     {
@@ -24,13 +28,16 @@ public class Card : MonoBehaviour
 
     void Update()
     {
-        
+        if (Debug_Mode)
+            anim.SetTrigger("isOpen");
+
     }
 
     public void Setting(int num)
     {
         idx = num;
         frontImage.sprite = Resources.Load<Sprite>($"Images/GameCard/card{idx}");
+        backImage.sprite = Resources.Load<Sprite>($"Images/GameCardBack/level{(int)LevelValue}");
     }
 
     public void OpenCard()  
@@ -51,7 +58,9 @@ public class Card : MonoBehaviour
                 return;
             }
             anim.SetTrigger("isOpen");
-            Invoke("Match", 0.6f); // �Ǽ��� ������ ���� �����ϸ� ī�� ���� �� ���� ���ư��� ���̵� �ø� �� ����.
+
+            Invoke("Match", 0.5f / (LevelValue / 2)); 
+
             GameManager.Instance.isCanOpen = false;
             audioSource.PlayOneShot(clip, 0.3f);
         }

@@ -11,32 +11,49 @@ public class ChoiceButton : MonoBehaviour
     public void Start()
     {
         saveLevel = PlayerPrefs.GetInt("GameLv");
-
     }
 
     public void Choice2Lv()
     //2lv
     {
-      
+        if (saveLevel >= 2)
+        {
+            PlayerPrefs.DeleteAll();
             PlayerPrefs.SetString("Loadlv2", "2");
-            PlayerPrefs.SetInt("LoadLv", saveLevel);
             PlayerPrefs.Save();
             SceneManager.LoadScene("Main2Scene");
-        
+        }
 
     }
     public void Choice3Lv()
     //3lv
     {
-
+        if (saveLevel >= 3)
+        {
+            PlayerPrefs.DeleteAll();
             PlayerPrefs.SetString("Loadlv3", "3");
-            PlayerPrefs.SetInt("LoadLv", saveLevel);
             PlayerPrefs.Save();
             SceneManager.LoadScene("Main3Scene");
-        
+        }
+    }
+    public void HiddenLv()
+    {   
+            PlayerPrefs.SetString("Loadlvh", "h");
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("HiddenScene");
+    }
+
+    public void SaveDel()
+    {
+        PlayerPrefs.DeleteAll();
     }
     public void BackScene()
     {
         SceneManager.LoadScene("OpenScene");
+    }
+
+    public void HiddenScene()
+    {
+        SceneManager.LoadScene("HiddenScene");
     }
 }
