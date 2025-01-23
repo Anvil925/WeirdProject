@@ -132,12 +132,12 @@ public class GameManager : MonoBehaviour
             Result.SetActive(true);
             if (cardCount > 0)
             {  
-                audioSource.PlayOneShot(failClip, 0.03f);
+                audioSource.PlayOneShot(failClip, 0.05f);
                 FailMsg.SetActive(true);
             }
             else
             {
-                audioSource.PlayOneShot(successClip, 0.03f);
+                audioSource.PlayOneShot(successClip, 0.05f);
                 CrealMSg.SetActive(true);
             }
             
@@ -178,8 +178,8 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.Save();
                 }
 
-                CurrentTimeTxt.text = $"{elapsedTime:F1}ÃÊ";
-                BestTimeTxt.text = $"{bestTime:F1}ÃÊ";
+                CurrentTimeTxt.text = $"{elapsedTime:F1}ï¿½ï¿½";
+                BestTimeTxt.text = $"{bestTime:F1}ï¿½ï¿½";
                 Result.SetActive(true);
                 CrealMSg.SetActive(true);
                 Time.timeScale = 1;
