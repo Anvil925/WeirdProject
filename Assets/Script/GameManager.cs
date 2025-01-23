@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-        void Start()
+    void Start()
     {
         //audioSource = GetComponent<AudioSource>();
         isCanOpen = true;
@@ -76,10 +76,12 @@ public class GameManager : MonoBehaviour
         if (lv2 == "2")
         {
             level = 2;
+            saveLevel = PlayerPrefs.GetInt("LoadLv");
         }
         else if (lv3 == "3")
         {
-            level = 3;           
+            level = 3;
+            saveLevel = PlayerPrefs.GetInt("LoadLv");
         }
         else if (Lvh == "h")
         {
@@ -217,11 +219,11 @@ public class GameManager : MonoBehaviour
                 CrealMSg.SetActive(true);
                 CurrentTimeTxt.text = $"{elapsedTime:F1}";
                 BestTimeTxt.text = $"{bestTime:F1}";
+
                 audioSource.ignoreListenerPause = true;
                 audioSource.PlayOneShot(successClip, 0.7f);
                 Result.SetActive(true);
                 Invoke("TimeStop", 2f);
-                Time.timeScale = 0;
                 
                 if (level <= toplevel)
                 {
