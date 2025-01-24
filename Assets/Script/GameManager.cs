@@ -195,6 +195,7 @@ public class GameManager : MonoBehaviour
                 }
                 else if (scene.name == "Main3Scene")
                 {
+                    PlayerPrefs.SetString("Main3Scene", scene.name);
                     Achievements.SetActive(true);
                     Animator achAnim = Achievements.GetComponent<Animator>();
                     achAnim.SetTrigger("isActivate");
@@ -220,6 +221,7 @@ public class GameManager : MonoBehaviour
                 audioSource.ignoreListenerPause = true;
                 audioSource.PlayOneShot(successClip, 0.7f);
                 Result.SetActive(true);
+                retry.SetActive(true);
                 if(nextLv != null)
                     nextLv.SetActive(true);
                 Invoke("TimeStop", 2f);
