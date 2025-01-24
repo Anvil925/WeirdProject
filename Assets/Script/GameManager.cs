@@ -72,7 +72,11 @@ public class GameManager : MonoBehaviour
         string lv3 = PlayerPrefs.GetString("Loadlv3");
         string Lvh = PlayerPrefs.GetString("Loadlvh");
         bestTime = PlayerPrefs.GetFloat("BestTime", float.MaxValue);
-        if (lv2 == "2")
+        if (Lvh == "h")
+        {
+            hiddenLv = 1;
+        }
+        else if (lv2 == "2")
         {
             level = 2;
             saveLevel = PlayerPrefs.GetInt("LoadLv");
@@ -81,10 +85,6 @@ public class GameManager : MonoBehaviour
         {
             level = 3;
             saveLevel = PlayerPrefs.GetInt("LoadLv");
-        }
-        else if (Lvh == "h")
-        {
-            hiddenLv = 1;
         }
 
         startTime = Time.time;   
@@ -112,10 +112,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (Time.timeScale != 0f)
-            time -= Time.deltaTime;
-        time = Mathf.Max(time, 0.0f);
-        timeTxt.text = time.ToString("N1");
-
         {
             time = Mathf.Max(time - Time.deltaTime, 0.0f);
             timeTxt.text = time.ToString("N1");
@@ -152,8 +148,9 @@ public class GameManager : MonoBehaviour
                 FailMsg.SetActive(true);
             }
 
-            if (level <= toplevel)
+            if (level >= toplevel)
             {
+                level = toplevel;
                 if (saveLevel <= toplevel)
                 {
                     saveLevel = toplevel;
@@ -179,7 +176,6 @@ public class GameManager : MonoBehaviour
 
             if (cardCount == 0)
             {
-                audioSource.PlayOneShot(successClip, 0.05f);
                 Invoke("TimeStop", 2f);
                 //Time.timeScale = 0.0f;
                 level += 1;
@@ -235,8 +231,9 @@ public class GameManager : MonoBehaviour
                 }
 
                 
-                if (level <= toplevel)
+                if (level >= toplevel)
                 {
+                    level = toplevel;
                     if (saveLevel <= toplevel)
                     {
                         saveLevel = toplevel;
