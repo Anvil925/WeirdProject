@@ -72,38 +72,44 @@ public class GameManager : MonoBehaviour
         string lv3 = PlayerPrefs.GetString("Loadlv3");
         string Lvh = PlayerPrefs.GetString("Loadlvh");
         bestTime = PlayerPrefs.GetFloat("BestTime", float.MaxValue);
-        if (lv2 == "2")
-        {
-            level = 2;
-            saveLevel = PlayerPrefs.GetInt("LoadLv");
-        }
-        else if (lv3 == "3")
-        {
-            level = 3;
-            saveLevel = PlayerPrefs.GetInt("LoadLv");
-        }
-        else if (Lvh == "h")
+        if (Lvh == "h")
         {
             hiddenLv = 1;
         }
+        else
+        {
+            if (lv2 == "2")
+            {
+                level = 2;
+                saveLevel = PlayerPrefs.GetInt("LoadLv");
+            }
+            else if (lv3 == "3")
+            {
+                level = 3;
+                saveLevel = PlayerPrefs.GetInt("LoadLv");
+            }
+        }
 
-        startTime = Time.time;   
+        startTime = Time.time;
         if (hiddenLv == 1)
         {
             timeLimit = 210.0f;
         }
-        else if (level == 1)
+        else
         {
-            timeLimit = 180.0f;
-        }
-        else if (level == 2 )
-        {
-            timeLimit = 120.0f;
-        }
-        else if (level == 3)
-        {
-            timeLimit = 90.0f;
+            if (level == 1)
+            {
+                timeLimit = 180.0f;
+            }
+            else if (level == 2)
+            {
+                timeLimit = 120.0f;
+            }
+            else if (level == 3)
+            {
+                timeLimit = 90.0f;
 
+            }
         }
         time = timeLimit;
         Time.timeScale = 1.0f;
@@ -112,10 +118,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (Time.timeScale != 0f)
-            time -= Time.deltaTime;
-        time = Mathf.Max(time, 0.0f);
-        timeTxt.text = time.ToString("N1");
-
         {
             time = Mathf.Max(time - Time.deltaTime, 0.0f);
             timeTxt.text = time.ToString("N1");
