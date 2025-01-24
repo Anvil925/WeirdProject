@@ -485,7 +485,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1180698710}
         m_TargetAssemblyTypeName: ChoiceButton, Assembly-CSharp
-        m_MethodName: HiddenScene
+        m_MethodName: HiddenLv
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

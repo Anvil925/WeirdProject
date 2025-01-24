@@ -34,6 +34,7 @@ public class ChoiceButton : MonoBehaviour
         Debug.Log("Choice3Lv");
         if (saveLevel >= 3)
         {
+            PlayerPrefs.DeleteKey("Loadlv2");
             PlayerPrefs.DeleteKey("Loadlv3");
             PlayerPrefs.SetString("Loadlv3", "3");
             PlayerPrefs.Save();
@@ -42,8 +43,8 @@ public class ChoiceButton : MonoBehaviour
     }
     public void HiddenLv()
     {
-            PlayerPrefs.DeleteAll();
-            PlayerPrefs.SetInt("GameLv", 3);
+            PlayerPrefs.DeleteKey("Loadlv2");
+            PlayerPrefs.DeleteKey("Loadlv3");
             PlayerPrefs.SetString("Loadlvh", "h");
             PlayerPrefs.Save();
             SceneManager.LoadScene("HiddenScene");
@@ -59,8 +60,4 @@ public class ChoiceButton : MonoBehaviour
         SceneManager.LoadScene("OpenScene");
     }
 
-    public void HiddenScene()
-    {
-        SceneManager.LoadScene("HiddenScene");
-    }
 }
