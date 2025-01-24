@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject endTxt;
     public GameObject Result;
+    public GameObject retry;
+    public GameObject nextLv;
     public GameObject FailMsg;
     public GameObject CrealMSg;
     public GameObject Achievements;
@@ -56,15 +58,9 @@ public class GameManager : MonoBehaviour
         if (Instance == null) 
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-
-            Destroy(gameObject);
-
 
         }
+
     }
 
     void Start()
@@ -118,10 +114,13 @@ public class GameManager : MonoBehaviour
         if (Time.timeScale != 0f)
             time -= Time.deltaTime;
         time = Mathf.Max(time, 0.0f);
-        Debug.Log("time");
         timeTxt.text = time.ToString("N1");
-    
-        
+
+        {
+            time = Mathf.Max(time - Time.deltaTime, 0.0f);
+            timeTxt.text = time.ToString("N1");
+        }
+
         if ((timeLimit / 3) >= time)
         {
             timeAnim.SetBool("isTimeLimit", true);
@@ -135,19 +134,20 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        
+
         if (time <= (timeLimit / 3) && !pitchChanged)
         {
             StartCoroutine(GraduallyIncreasePitch(1.5f, 3.0f));
             pitchChanged = true;
         }
-        
+
         if (time <= endtime)
         {
             Time.timeScale = 0f;
             Result.SetActive(true);
+            nextLv.SetActive(true);
             if (cardCount > 0)
-            {  
+            {
                 audioSource.PlayOneShot(failClip, 0.02f);
                 FailMsg.SetActive(true);
             }
@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
             {
                 audioSource.PlayOneShot(successClip, 0.05f);
                 Invoke("TimeStop", 2f);
-                Time.timeScale = 0.0f;
+                //Time.timeScale = 0.0f;
                 level += 1;
 
                 Scene scene = GetCurrentScene();
@@ -223,7 +223,17 @@ public class GameManager : MonoBehaviour
                 audioSource.ignoreListenerPause = true;
                 audioSource.PlayOneShot(successClip, 0.7f);
                 Result.SetActive(true);
+                if(nextLv != null)
+                    nextLv.SetActive(true);
                 Invoke("TimeStop", 2f);
+
+                Time.timeScale = 0;
+
+                if (level == 3)
+                {                  
+                    nextLv.SetActive(false);
+                }
+
                 
                 if (level <= toplevel)
                 {

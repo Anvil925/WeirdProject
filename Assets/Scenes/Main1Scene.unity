@@ -166,6 +166,8 @@ MonoBehaviour:
   timeAnim: {fileID: 1894322582}
   endTxt: {fileID: 0}
   Result: {fileID: 1402936463}
+  retry: {fileID: 988548844}
+  nextLv: {fileID: 1926856880}
   FailMsg: {fileID: 1264349480}
   CrealMSg: {fileID: 278860770}
   Achievements: {fileID: 0}
@@ -1957,7 +1959,7 @@ GameObject:
   - component: {fileID: 1926856885}
   - component: {fileID: 1926856884}
   - component: {fileID: 1926856883}
-  - component: {fileID: 1926856882}
+  - component: {fileID: 1926856886}
   m_Layer: 5
   m_Name: NextBtn
   m_TagString: Untagged
@@ -1984,18 +1986,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.037308, y: -121}
   m_SizeDelta: {x: 418.13, y: 121.21}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1926856882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926856880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b02bdf7c87116d94781c1bfc5820a46c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1926856883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2040,9 +2030,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1926856882}
-        m_TargetAssemblyTypeName: RetryButton, Assembly-CSharp
-        m_MethodName: HiddeRetry
+      - m_Target: {fileID: 1926856886}
+        m_TargetAssemblyTypeName: NextBtn, Assembly-CSharp
+        m_MethodName: Next2Lv
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2090,6 +2080,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926856880}
   m_CullTransparentMesh: 1
+--- !u!114 &1926856886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926856880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2efdf3ab869164642ad2729ee3c2342d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
