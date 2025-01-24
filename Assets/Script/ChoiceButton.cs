@@ -47,6 +47,7 @@ public class ChoiceButton : MonoBehaviour
     public void SaveDel()
     {
         PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("OpenScene");
     }
     public void BackScene()
     {
