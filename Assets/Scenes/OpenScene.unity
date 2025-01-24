@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   continueBtn: {fileID: 624875677}
+  questionBtn: {fileID: 1474250211}
 --- !u!4 &68243015
 Transform:
   m_ObjectHideFlags: 0
@@ -1630,6 +1631,7 @@ GameObject:
   - component: {fileID: 1474250214}
   - component: {fileID: 1474250213}
   - component: {fileID: 1474250215}
+  - component: {fileID: 1474250216}
   m_Layer: 5
   m_Name: QuestionMarkBtn
   m_TagString: Untagged
@@ -1734,11 +1736,35 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1474250213}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1474250216}
+        m_TargetAssemblyTypeName: OpenButton, Assembly-CSharp
+        m_MethodName: ClearScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1474250216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474250211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8775882a6e1d4e50b745fd8d25e9bfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1516115977
 GameObject:
   m_ObjectHideFlags: 0

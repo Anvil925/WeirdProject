@@ -195,6 +195,7 @@ public class GameManager : MonoBehaviour
                 }
                 else if (scene.name == "Main3Scene")
                 {
+                    PlayerPrefs.SetString("Main3Scene", scene.name);
                     Achievements.SetActive(true);
                     Animator achAnim = Achievements.GetComponent<Animator>();
                     achAnim.SetTrigger("isActivate");
