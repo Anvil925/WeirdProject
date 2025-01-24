@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public GameObject FailMsg;
     public GameObject CrealMSg;
     public GameObject Achievements;
+    public GameObject ClearSceneBtn;
     public SceneManager sceneManager;
     public int cardCount = 0;
     public bool isCanOpen = true;
@@ -190,12 +191,18 @@ public class GameManager : MonoBehaviour
                 {
                     PlayerPrefs.SetString("Main1Scene", scene.name);
                     PlayerPrefs.SetString("ContinueBtn", "ContinueBtn");
+                    PlayerPrefs.SetInt("GameLv", 2); // 다음 레벨 열리도록 레벨 저장
+                    PlayerPrefs.Save(); // 저장 강제 실행
+                    Debug.Log("GameLv saved as: " + PlayerPrefs.GetInt("GameLv"));
                 }
                 else if (scene.name == "Main2Scene")
                 {
                     PlayerPrefs.SetString("Main2Scene", scene.name);
                     Debug.Log("main2Clear");
                     Debug.Log(PlayerPrefs.HasKey("Main2Scene"));
+                    PlayerPrefs.SetInt("GameLv", 3); // 다음 레벨 열리도록 레벨 저장
+                    PlayerPrefs.Save(); // 저장 강제 실행
+                    Debug.Log("GameLv saved as: " + PlayerPrefs.GetInt("GameLv"));
                 }
                 else if (scene.name == "Main3Scene")
                 {
@@ -203,6 +210,7 @@ public class GameManager : MonoBehaviour
                     Animator achAnim = Achievements.GetComponent<Animator>();
                     achAnim.SetTrigger("isActivate");
                     audioSource.PlayOneShot(matchClip);
+                    ClearSceneBtn.SetActive(true);
                 }
 
                 elapsedTime = Time.time - startTime;
@@ -229,13 +237,6 @@ public class GameManager : MonoBehaviour
                 Invoke("TimeStop", 2f);
 
                 Time.timeScale = 0;
-
-                if (level == 3)
-                {                  
-                    nextLv.SetActive(false);
-                }
-
-                
                 if (level <= toplevel)
                 {
                     if (saveLevel <= toplevel)
