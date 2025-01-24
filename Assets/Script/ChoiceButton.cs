@@ -11,11 +11,14 @@ public class ChoiceButton : MonoBehaviour
     public void Start()
     {
         saveLevel = PlayerPrefs.GetInt("GameLv");
+
+        Debug.Log(saveLevel);
     }
 
     public void Choice2Lv()
     //2lv
     {
+        Debug.Log("Choice2Lv");
         if (saveLevel >= 2)
         {
             PlayerPrefs.DeleteKey("Loadlv2");
@@ -28,6 +31,7 @@ public class ChoiceButton : MonoBehaviour
     public void Choice3Lv()
     //3lv
     {
+        Debug.Log("Choice3Lv");
         if (saveLevel >= 3)
         {
             PlayerPrefs.DeleteKey("Loadlv3");
