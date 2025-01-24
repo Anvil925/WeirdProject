@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using static UnityEngine.GraphicsBuffer;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class GameManager : MonoBehaviour
 {
@@ -141,7 +142,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0f;
             Result.SetActive(true);
-            nextLv.SetActive(true);
+            retry.SetActive(true);
             if (cardCount > 0)
             {
                 audioSource.PlayOneShot(failClip, 0.02f);
