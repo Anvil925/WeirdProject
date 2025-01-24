@@ -22,6 +22,7 @@ public class NextBtn : MonoBehaviour
 
     public void Next3Lv()
     {
+            PlayerPrefs.DeleteKey("Loadlv2");
             PlayerPrefs.DeleteKey("Loadlv3");
             PlayerPrefs.SetString("Loadlv3", "3");
             PlayerPrefs.Save();
