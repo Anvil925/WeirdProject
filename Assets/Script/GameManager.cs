@@ -79,12 +79,12 @@ public class GameManager : MonoBehaviour
         else if (lv2 == "2")
         {
             level = 2;
-            saveLevel = PlayerPrefs.GetInt("LoadLv");
+            
         }
         else if (lv3 == "3")
         {
             level = 3;
-            saveLevel = PlayerPrefs.GetInt("LoadLv");
+            
         }
 
         startTime = Time.time;   
@@ -150,7 +150,7 @@ public class GameManager : MonoBehaviour
 
             if (level >= toplevel)
             {
-                level = toplevel;
+                toplevel = level;
                 if (saveLevel <= toplevel)
                 {
                     saveLevel = toplevel;
@@ -232,11 +232,12 @@ public class GameManager : MonoBehaviour
                 
                 if (level >= toplevel)
                 {
-                    level = toplevel;
+                    toplevel = level;
                     if (saveLevel <= toplevel)
                     {
                         saveLevel = toplevel;
                         GameLvSave();
+                      
                     }
                     if (saveLevel == 3)
                     {
@@ -266,6 +267,8 @@ public class GameManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("GameLv", toplevel);
         PlayerPrefs.Save();
+        Debug.Log("GameLvSave");
+        Debug.Log(toplevel);
     }
     IEnumerator GraduallyIncreasePitch(float targetPitch, float duration)
     {
