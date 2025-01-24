@@ -223,11 +223,10 @@ public class GameManager : MonoBehaviour
                     nextLv.SetActive(true);
                 Invoke("TimeStop", 2f);
 
-                Time.timeScale = 0;
 
                 if (level == 3)
                 {                  
-                    nextLv.SetActive(false);
+                    //nextLv.SetActive(false);
                 }
 
                 
