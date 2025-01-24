@@ -7,12 +7,31 @@ public class RetryButton : MonoBehaviour
 {
     public void Retry()
     {
-        PlayerPrefs.DeleteAll();
-        SceneManager.LoadScene("Main1Scene");
+        //PlayerPrefs.DeleteAll();
+        Scene scene = GetCurrentScene();
+
+        if(scene.name == "Main1Scene")
+        {
+            SceneManager.LoadScene("Main1Scene");
+        }
+        else if (scene.name == "Main2Scene")
+        {
+            SceneManager.LoadScene("Main2Scene");
+        }
+        else if (scene.name == "Main3Scene")
+        {
+            SceneManager.LoadScene("Main3Scene");
+        }
+
+        
     }
 
     public void HiddeRetry()
     {
         SceneManager.LoadScene("HiddenScene");
+    }
+    Scene GetCurrentScene()
+    {
+        return SceneManager.GetActiveScene();
     }
 }
