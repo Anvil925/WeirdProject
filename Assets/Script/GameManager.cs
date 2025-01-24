@@ -227,7 +227,7 @@ public class GameManager : MonoBehaviour
 
                 if (level == 3)
                 {                  
-                    nextLv.SetActive(false);
+                    //nextLv.SetActive(false);
                 }
 
                 
