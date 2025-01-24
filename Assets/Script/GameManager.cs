@@ -148,8 +148,9 @@ public class GameManager : MonoBehaviour
                 FailMsg.SetActive(true);
             }
 
-            if (level <= toplevel)
+            if (level >= toplevel)
             {
+                level = toplevel;
                 if (saveLevel <= toplevel)
                 {
                     saveLevel = toplevel;
@@ -229,8 +230,9 @@ public class GameManager : MonoBehaviour
                 }
 
                 
-                if (level <= toplevel)
+                if (level >= toplevel)
                 {
+                    level = toplevel;
                     if (saveLevel <= toplevel)
                     {
                         saveLevel = toplevel;
