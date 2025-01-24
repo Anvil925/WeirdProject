@@ -219,6 +219,7 @@ public class GameManager : MonoBehaviour
                 audioSource.ignoreListenerPause = true;
                 audioSource.PlayOneShot(successClip, 0.7f);
                 Result.SetActive(true);
+                retry.SetActive(true);
                 if(nextLv != null)
                     nextLv.SetActive(true);
                 Invoke("TimeStop", 2f);
