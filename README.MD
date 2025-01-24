@@ -40,8 +40,6 @@ PlayerPrefs. 함수의 기능를 이용해서 플레이어의 레벨 저장 과 
 그리고 불러올때는 같이 저장 한 문자열 데이터도 불러서 문자열데이터가 불러낸 값과 똑같을시에만 원하는 레벨값을 불러낼 수 잇게 햇습니다
 
 ### **Main Scene**
-- 
-- 
 - 난이도 조절 기능
     - MainScene을 복제해 여러 난이도별 구성을 달리함
     - 카드 앞면을 보여준뒤, 뒷면으로 전환되는 시간에 대한 차등
@@ -55,7 +53,7 @@ PlayerPrefs. 함수의 기능를 이용해서 플레이어의 레벨 저장 과 
         - 3단계: 카드종류 10개
 
 ### **Result Scene**
-
+![alt text](Images/Result.png)
 
 ### **Sound**
 
@@ -66,3 +64,5 @@ PlayerPrefs. 함수의 기능를 이용해서 플레이어의 레벨 저장 과 
 ## 와이어프레임
 
 ![alt text](Images/wireframe.png)
+
+![alt text](Images/역할.png)
