@@ -147,7 +147,6 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0f;
             Result.SetActive(true);
-            nextLv.SetActive(true);
             if (cardCount > 0)
             {
                 audioSource.PlayOneShot(failClip, 0.02f);
@@ -226,7 +225,7 @@ public class GameManager : MonoBehaviour
                 audioSource.PlayOneShot(successClip, 0.7f);
                 Result.SetActive(true);
                 if(nextLv != null)
-                    nextLv.SetActive(true);
+                nextLv.SetActive(true);
                 Invoke("TimeStop", 2f);
 
                 Time.timeScale = 0;
