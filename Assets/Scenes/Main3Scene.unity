@@ -246,7 +246,7 @@ MonoBehaviour:
   endTxt: {fileID: 0}
   Result: {fileID: 933233780}
   retry: {fileID: 1769500643}
-  nextLv: {fileID: 1422246051}
+  nextLv: {fileID: 0}
   FailMsg: {fileID: 1039040859}
   CrealMSg: {fileID: 1732812997}
   Achievements: {fileID: 251045260}
@@ -1215,7 +1215,6 @@ RectTransform:
   - {fileID: 1769500644}
   - {fileID: 1039040860}
   - {fileID: 1732812998}
-  - {fileID: 1422246052}
   m_Father: {fileID: 750854988}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
