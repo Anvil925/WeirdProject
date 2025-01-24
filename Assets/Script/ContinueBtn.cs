@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ContinueBtn : MonoBehaviour
 {
-    // ì´ì–´í•˜ê¸° ë²„íŠ¼
+    // ÀÌ¾îÇÏ±â ¹öÆ°
     public void Btn_Continue()
     {
         Debug.Log("ContinueBtn");
